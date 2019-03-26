@@ -4,19 +4,17 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url">jdbc:sqlserver://localhost</property>
-    <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-    <property name="hibernate.connection.username">sa</property>
-    <property name="hibernate.connection.password"></property>
-    <!-- sql server 方言 底层拼接sql语句-->
-    <property name="dialect">org.hibernate.dialect.SQLServer2008Dialect</property>
-    <!--可以在控制台显示对数据库的操作语句 -->
-      <property name="hibernate.show_sql">true</property>
+    <property name="connection.url">jdbc:mysql://134.209.5.99:3306/xyl</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">XYLxyl2019!?</property>
 
-    <mapping class="xyl.cct.pojo.LyEntity"/>
-    <mapping resource="xyl/cct/pojo/LyEntity.hbm.xml"/>
-    <mapping resource="xyl/cct/pojo/XyEntity.hbm.xml"/>
-    <mapping class="xyl.cct.pojo.XyEntity"/>
+
+    <mapping class="xyl.dyx.POJO.ActivityEntity"/>
+    <mapping resource="ActivityEntity.hbm.xml"/>
+    <mapping class="xyl.dyx.POJO.ManagerEntity"/>
+    <mapping resource="ManagerEntity.hbm.xml"/>
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

@@ -3,7 +3,7 @@ package xyl.dyx.POJO;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "activity", schema = "dyx")
+@Table(name = "activity", schema = "xyl")
 public class ActivityEntity {
     private int aid;
     private String name;
@@ -19,11 +19,6 @@ public class ActivityEntity {
     }
 
     public void setAid(int aid) {
-        /*
-        * 由于活动id是自增的，所以一开始不赋值
-        * 根据输出来看，预设值是0
-        * 在进行添加操作后，再根据数据库的id号设置
-         */
         this.aid = aid;
     }
 
@@ -82,14 +77,14 @@ public class ActivityEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ActivityEntity that = (ActivityEntity) o;
+        ActivityEntity entity = (ActivityEntity) o;
 
-        if (aid != that.aid) return false;
-        if (num != that.num) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (time != null ? !time.equals(that.time) : that.time != null) return false;
-        if (location != null ? !location.equals(that.location) : that.location != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (aid != entity.aid) return false;
+        if (num != entity.num) return false;
+        if (name != null ? !name.equals(entity.name) : entity.name != null) return false;
+        if (time != null ? !time.equals(entity.time) : entity.time != null) return false;
+        if (location != null ? !location.equals(entity.location) : entity.location != null) return false;
+        if (description != null ? !description.equals(entity.description) : entity.description != null) return false;
 
         return true;
     }

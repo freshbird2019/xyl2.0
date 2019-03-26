@@ -95,8 +95,6 @@ public class managerController {
     public String submitAcInfo(@ModelAttribute ActivityEntity ac) {
         if(acService.addActivityEntity(ac)) {
             System.out.println("add new ac " + ac.getName());
-
-            acService.addActivityEntity(ac);
         } else {
             System.out.println("add failed");
         }

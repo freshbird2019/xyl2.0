@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="xyl.dyx.POJO.ActivityEntity" table="activity" schema="dyx">
+    <class name="xyl.dyx.POJO.ActivityEntity" table="activity" schema="xyl">
         <id name="aid" column="aid">
             <generator class="identity"/>
         </id>

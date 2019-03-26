@@ -3,7 +3,7 @@ package xyl.dyx.POJO;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "manager", schema = "dyx", catalog = "")
+@Table(name = "manager", schema = "xyl")
 public class ManagerEntity {
     private String id;
     private String name;
