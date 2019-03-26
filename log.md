@@ -7,11 +7,11 @@
 * 每次自动生成实体类，都会重写hibernate的配置文件，然后还会写错。哭。我先存在这里。
 
     `    
-    <property name="connection.url">jdbc:mysql://localhost:3306/dyx?useUnicode=true&amp;characterEncoding=UTF8</property>
-     <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
-     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-     <property name="hibernate.connection.username">dyx</property>
-     <property name="hibernate.connection.password">1024</property>
+    <property name="connection.url">jdbc:mysql://134.209.5.99:3306/xyl?useUnicode=true&amp;characterEncoding=UTF8</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">XYLxyl2019!?</property>
     `
 
 * mysql数据库有个小问题，每次启动，时区都是null。然后跑tomcat就会报错。可以通过下面的代码设置时区，但是每次关机完又不行了，估计需要**在配置文件里面**改一下。欸，可是我这么设置完以后，再开机就没事了
