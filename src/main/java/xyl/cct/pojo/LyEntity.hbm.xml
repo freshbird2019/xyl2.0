@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="xyl.cct.pojo.LyEntity" table="ly" schema="dbo" catalog="master">
+        <id name="lyId">
+            <column name="ly_id" sql-type="int"/>
+        </id>
+        <property name="lyDate">
+            <column name="ly_date" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="lyLyr">
+            <column name="ly_lyr" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="lyInfo">
+            <column name="ly_info" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

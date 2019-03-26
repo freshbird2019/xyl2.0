@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="xyl.cct.pojo.XyEntity" table="xy" schema="dbo" catalog="master">
+        <id name="xyId">
+            <column name="xy_id" sql-type="int"/>
+        </id>
+        <property name="xyUsername">
+            <column name="xy_username" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="xyPassword">
+            <column name="xy_password" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="xyAge">
+            <column name="xy_age" sql-type="varchar(5)" length="5" not-null="true"/>
+        </property>
+        <property name="xySex">
+            <column name="xy_sex" sql-type="varchar(5)" length="5" not-null="true"/>
+        </property>
+        <property name="xyEmail">
+            <column name="xy_email" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="xyPhone">
+            <column name="xy_phone" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
