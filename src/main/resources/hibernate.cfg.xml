@@ -7,14 +7,21 @@
     <property name="connection.url">jdbc:mysql://134.209.5.99:3306/xyl</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">XYLxyl2019!?</property>
-
 
     <mapping class="xyl.dyx.POJO.ActivityEntity"/>
     <mapping resource="ActivityEntity.hbm.xml"/>
     <mapping class="xyl.dyx.POJO.ManagerEntity"/>
     <mapping resource="ManagerEntity.hbm.xml"/>
+
+    <mapping class="xyl.cct.pojo.Ly"/>
+    <mapping resource="xyl/cct/pojo/Ly.hbm.xml"/>
+    <mapping resource="xyl/cct/pojo/Xy.hbm.xml"/>
+    <mapping class="xyl.cct.pojo.Xy"/>
+    <mapping class="xyl.cct.pojo.Clazz"/>
+    <mapping resource="xyl/cct/pojo/Clazz.hbm.xml"/>
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

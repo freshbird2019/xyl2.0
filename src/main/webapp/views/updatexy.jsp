@@ -12,31 +12,27 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/update.do" method="post">
-    <input type="hidden" name="xyId" value="${xy.xyId}"/>
+    <input type="hidden" name="xid" value="${xy.xid}"/>
     <table>
         <tr>
             <th>name:</th>
-            <td><input type="text" name="xyUsername" value="${xy.xyUsername}"></td>
+            <td><input type="text" name="name" value="${xy.name}"></td>
         </tr>
         <tr>
-            <th>age:</th>
-            <td><input type="text" name="xyAge" value="${xy.xyAge}"></td>
+            <th>sex:</th>
+            <td><input type="text" name="sex" value="${xy.sex}"></td>
         </tr>
         <tr>
-        <th>sex:</th>
-        <td><input type="text" name="xySex" value="${xy.xySex}"></td>
-        </tr>
-        <tr>
-            <th>phone:</th>
-            <td><input type="text" name="xyPhone" value="${xy.xyPhone}"></td>
+        <th>phone:</th>
+        <td><input type="text" name="phone" value="${xy.phone}"></td>
         </tr>
         <tr>
             <th>email:</th>
-            <td><input type="text" name="xyEmail" value="${xy.xyEmail}"></td>
+            <td><input type="text" name="mail" value="${xy.mail}"></td>
         </tr>
         <tr>
             <th>pwd：</th>
-            <td><input type="password" name="xyPassword" value="${xy.xyPassword}"> </td>
+            <td><input type="password" name="pw" value="${xy.pw}"> </td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" name="xiugai" value="修改"></td>

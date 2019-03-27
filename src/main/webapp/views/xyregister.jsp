@@ -13,29 +13,25 @@
 <body>
 <form action="${pageContext.request.contextPath}/register.do" method="post">
     <table>
-    <tr>
-        <th>name:</th>
-        <td><input type="text" name="xyUsername" value=""></td>
-    </tr>
+        <tr>
+            <th>name:</th>
+            <td><input type="text" name="name" value=""></td>
+        </tr>
         <tr>
             <th>password:</th>
-            <td><input type="text" name="xyPassword" value=""></td>
+            <td><input type="password" name="pw" value=""></td>
         </tr>
     <tr>
-        <th>age:</th>
-        <td><input type="text" name="xyAge" value=""></td>
-    </tr>
-    <tr>
         <th>sex:</th>
-        <td><input type="text" name="xySex" value=""></td>
+        <td><input type="text" name="sex" value=""></td>
     </tr>
     <tr>
         <th>phone:</th>
-        <td><input type="text" name="xyPhone" value=""></td>
+        <td><input type="text" name="phone" value=""></td>
     </tr>
     <tr>
         <th>email:</th>
-        <td><input type="text" name="xyEmail" value=""></td>
+        <td><input type="text" name="mail" value=""></td>
     </tr>
     <tr>
         <td colspan="2"><input type="submit" name="xiugai" value="注册"></td>

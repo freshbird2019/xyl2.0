@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="xyl.cct.pojo.Xy" table="xy" schema="xyl">
+        <id name="xid">
+            <column name="xid" sql-type="int(11)"/>
+        </id>
+        <property name="name">
+            <column name="name" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="sex">
+            <column name="sex" sql-type="char(1)" length="1"/>
+        </property>
+        <property name="phone">
+            <column name="phone" sql-type="decimal(11)" precision="11"/>
+        </property>
+        <property name="mail">
+            <column name="mail" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="pw">
+            <column name="pw" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="state">
+            <column name="state" sql-type="int(11)"/>
+        </property>
+        <many-to-one name="clazzByClassid" class="xyl.cct.pojo.Clazz">
+            <column name="classid" not-null="false"/>
+        </many-to-one>
+        <set name="liesByXid" inverse="true">
+            <key>
+                <column name="lyxid"/>
+            </key>
+            <one-to-many not-found="ignore" class="xyl.cct.pojo.Ly"/>
+        </set>
+    </class>
+</hibernate-mapping>
