@@ -23,10 +23,10 @@ public class Ly {
 
     @Basic
     @Column(name = "lyd", nullable = false)
+    @Temporal(TemporalType.DATE) //为了以防java和mysql冲突，我先加上去
     public Timestamp getLydate() {
         return lydate;
     }
-    ate
     public void setLydate(Timestamp lydate) {
         this.lydate = lydate;
     }

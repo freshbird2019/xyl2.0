@@ -17,7 +17,7 @@
 <div>
     <a href="activityPg">管理活动</a>
     <a href="xyPg">管理校友</a>
-    <a href="messagePg">管理留言</a>
+    <a href="glLy">管理留言</a>
 
 
 </div>

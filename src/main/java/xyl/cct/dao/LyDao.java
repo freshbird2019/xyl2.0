@@ -117,4 +117,19 @@ public class LyDao {
         }
         return ok;
     }
+
+    public static boolean updateLy(int id) {
+        return true;
+
+    }
+
+    /* 测试功能
+    public static void main(String[] args) {
+        List<Ly> list = queryAll();
+
+        for(Ly item : list) {
+            System.out.println(item.getLid());
+        }
+    }
+    */
 }
