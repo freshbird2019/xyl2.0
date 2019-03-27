@@ -1,17 +1,21 @@
 package xyl.dyx.controller;
 
+import com.sun.deploy.net.HttpResponse;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import xyl.cct.service.LyEntityService;
 import xyl.dyx.POJO.ActivityEntity;
 import xyl.dyx.POJO.ManagerEntity;
 import xyl.dyx.service.activityEntityService;
 import xyl.dyx.service.glyEntityService;
 
 import javax.annotation.Resource;
+import javax.jws.WebParam;
 
 @Controller
 public class managerController {
@@ -22,6 +26,7 @@ public class managerController {
     @Resource(name = "glyEntityService")
     private glyEntityService glyService;
 
+
     /*
     * login
     * 出于不知道什么原因，没办法在service层完成验证操作
@@ -29,7 +34,8 @@ public class managerController {
      */
     @RequestMapping("/login")
     public ModelAndView login() {
-        ModelAndView mv =new ModelAndView("login","command",new ManagerEntity());
+
+        ModelAndView mv =new ModelAndView("glyLogin","command",new ManagerEntity());
 
         mv.addObject("msg","欢迎登陆");
 
@@ -63,7 +69,7 @@ public class managerController {
      */
     @RequestMapping(value = "/activityPg",method = RequestMethod.GET)
     public ModelAndView activityPg() {
-        ModelAndView mv = new ModelAndView("acDisplay");
+        ModelAndView mv = new ModelAndView("displayAc");
         mv.addObject("activities",acService.getAllActivities());
         return mv;
     }
@@ -88,7 +94,7 @@ public class managerController {
      */
     @RequestMapping(value = "/addAc.do")
     public ModelAndView add() {
-        return new ModelAndView("addAcInfo","command",new ActivityEntity());
+        return new ModelAndView("addAc","command",new ActivityEntity());
     }
 
     @RequestMapping(value = "/submitAcInfo.do")
@@ -99,6 +105,19 @@ public class managerController {
             System.out.println("add failed");
         }
         return "redirect:/activityPg";
+    }
+
+    /*
+    * 管理留言信息
+    */
+    @RequestMapping(value = "/glLy")
+    public ModelAndView glLy() {
+        ModelAndView mv = new ModelAndView("glLy");
+
+        mv.addObject("lyList",)
+
+        return mv;
+
     }
 
 
