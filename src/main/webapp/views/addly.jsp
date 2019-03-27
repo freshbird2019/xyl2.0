@@ -12,7 +12,7 @@
 </head>
 <body>
     <form action="${pageContext.request.contextPath}/XyaddLy.do" method="post">
-        <input type="text" name="lyInfo" value=""/>
+        <input type="text" name="info" value=""/>
         <input type="submit" name="lyok" value="liuyan"/>
     </form>
 </body>

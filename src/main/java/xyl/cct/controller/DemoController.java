@@ -3,10 +3,10 @@ package xyl.cct.controller;
 
 
 
-import xyl.cct.pojo.LyEntity;
-import xyl.cct.pojo.XyEntity;
-import xyl.cct.service.LyEntityService;
-import xyl.cct.service.XyEntityService;
+import xyl.cct.pojo.Xy;
+import xyl.cct.pojo.Ly;
+import xyl.cct.service.LyService;
+import xyl.cct.service.XyService;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Timestamp;
 
 
 @Controller
@@ -24,10 +23,10 @@ import java.util.Date;
 public class DemoController {
 
 
-    @Resource(name = "lyEntityService")
-    private LyEntityService lyEntityService;
-    @Resource(name = "xyEntityService")
-    private XyEntityService xyEntityService;
+    @Resource(name = "lyService")
+    private LyService lyService;
+    @Resource(name = "xyService")
+    private XyService xyService;
 
     @RequestMapping("/index")
     public ModelAndView index() {
@@ -39,10 +38,10 @@ public class DemoController {
     /*
     获取所有校友信息
      */
-    @RequestMapping(value = "/getAllXyEntity", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAllXy", method = RequestMethod.GET)
     public ModelAndView getAllXy() {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("xys",xyEntityService.getAllXyEntity());
+        mv.addObject("xys",xyService.getAllXy());
         mv.setViewName("xydisplay");
         return mv;
     }
@@ -61,16 +60,15 @@ public class DemoController {
     发送留言给管理员审核，跳转到成功页面
      */
     @RequestMapping(value = "/XyaddLy.do",method = RequestMethod.POST)
-    public String XyaddLy(LyEntity l){
-        String s=l.getLyInfo();System.out.println("添加留言"+s);
-        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String time=df.format(new Date());
-        l.setLyLyr("cct");
-        l.setLyDate(time);
-        int x=lyEntityService.getMaxId();
-        l.setLyId(x+1);
-        System.out.println(l.getLyId());
-        lyEntityService.addLyEntity(l);
+    public String XyaddLy(Ly l){
+        String s=l.getInfo();System.out.println("添加留言"+s);
+        //SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Timestamp time=new Timestamp(System.currentTimeMillis());
+        //怎么设置留言人学号
+        l.setLydate(time);
+        l.setState(0);
+        System.out.println(l.getLid());
+        lyService.addLy(l);
         return "lysuccess";
     }
     /*
@@ -79,8 +77,8 @@ public class DemoController {
     @RequestMapping(value = "/delete.do")
     public String deleteLy(int id){
         System.out.println(id);
-        lyEntityService.deleteLyEntity(id);
-        return "redirect:/getAllLyEntity";
+        lyService.deleteLy(id);
+        return "redirect:/getAllLy";
     }
 
     /*
@@ -88,10 +86,10 @@ public class DemoController {
     将要修改的校友信息传过来
     跳转到updatexy界面修改
      */
-    @RequestMapping(value = "/updateXyEntity.do")
+    @RequestMapping(value = "/updateXy.do")
     public String updateXy(int id,Model model){
         System.out.println(id);
-        XyEntity x=xyEntityService.getXyEntityById(id);
+        Xy x=xyService.getXyById(id);
        // System.out.println(x.getId());
         model.addAttribute("xy",x);
         return "updatexy";
@@ -102,19 +100,19 @@ public class DemoController {
     成功后回到主界面
      */
     @RequestMapping("/update.do")
-    public String update(XyEntity x){
-        System.out.println("修改校友信息"+x.getXyUsername());
-        xyEntityService.updateXyEntity(x);
-        return "redirect:/getAllXyEntity";
+    public String update(Xy x){
+        System.out.println("修改校友信息"+x.getName());
+        xyService.updateXyEntity(x);
+        return "redirect:/getAllXy";
     }
 
     /*
     *从数据库中拉取所有留言
      */
-    @RequestMapping(value = "/getAllLyEntity")
+    @RequestMapping(value = "/getAllLy")
     public ModelAndView getAllLyEntity(){
         ModelAndView mv=new ModelAndView();
-        mv.addObject("lys",lyEntityService.getAllLyEntity());
+        mv.addObject("lys",lyService.getAllLy());
         mv.setViewName("lydisplay");
         return mv;
     }
@@ -130,14 +128,15 @@ public class DemoController {
     /*
     校友注册
      */
-    @RequestMapping(value = "/register.do")
-    public String Xyregister(XyEntity xy){
-        System.out.println("注册新校友"+xy.getXyUsername());
-        int index=xyEntityService.getMaxId()+1;
-        xy.setXyId(index);
+    @RequestMapping(value = "/register.do",method = RequestMethod.POST)
+    public String Xyregister(Xy xy){
+        System.out.println("注册新校友"+xy.getName());
+        /*int index=xyService.getMaxId()+1;
+        xy.setXyId(index);*/
+        xy.setState(0);
         //注册成功转到登录界面
-        if(xyEntityService.addXyEntity(xy)){
-            System.out.println("注册新校友"+xy.getXyId());
+        if(xyService.addXy(xy)){
+            System.out.println("注册新校友"+xy.getXid());
             return "index";
         }
         //重新注册

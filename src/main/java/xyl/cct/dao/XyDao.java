@@ -1,6 +1,5 @@
 package xyl.cct.dao;
 
-import xyl.cct.pojo.XyEntity;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,16 +7,18 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-
+import xyl.cct.pojo.Xy;
 import java.util.List;
 
-@Repository("xyEntityDao")
-public class XyEntityDao {
-    //查询所有校友信息
-    public static List<XyEntity> queryAll(){
+@Repository("xyDao")
+public class XyDao {
+    /*
+    查询所有校友信息
+     */
+    public static List<Xy> queryAll(){
         //负责被持久化对象的CRUD操作
         Session session=null;
-        List<XyEntity> list= null;
+        List<Xy> list= null;
         Transaction transaction=null;
         try{
             //负责配置并启动hibernate，创建SessionFactor，加载hibernate.cfg.xml
@@ -29,7 +30,7 @@ public class XyEntityDao {
             transaction=session.beginTransaction();
 
             //查询所有记录
-            String sql="from XyEntity order by xyId asc";
+            String sql="from Xy order by xid asc";
             Query query=session.createQuery(sql);
             list=query.list();
             transaction.commit();
@@ -48,7 +49,11 @@ public class XyEntityDao {
         return list;
     }
 
-    public boolean addXy(XyEntity xy){
+    /*
+    校友注册
+    增加一条校友信息
+     */
+    public boolean addXy(Xy xy){
         Session session=null;
         boolean ok=true;
         Transaction transaction=null;
@@ -81,8 +86,11 @@ public class XyEntityDao {
         return ok;
     }
 
+    /*
+    查询校友数量
+     */
     public static int getXyNum(){
-        List<XyEntity> list= null;
+        List<Xy> list= null;
         try{
             list=queryAll();
         }
@@ -95,16 +103,18 @@ public class XyEntityDao {
         if(index==0){
             re=0;
         }
-        else re=list.get(index-1).getXyId();
+        else re=list.get(index-1).getXid();
         System.out.println(re);
         return re;
     }
 
-    //根据id查询校友资料
-    public static XyEntity getXyEntityById(int id){
+    /*
+    根据校友xid来查询校友资料
+     */
+    public static Xy getXyById(int id){
         //负责被持久化对象的CRUD操作
         Session session=null;
-        XyEntity xy=new XyEntity();
+        Xy xy=new Xy();
         Transaction transaction=null;
         try{
             //负责配置并启动hibernate，创建SessionFactor，加载hibernate.cfg.xml
@@ -116,7 +126,7 @@ public class XyEntityDao {
             transaction=session.beginTransaction();
 
             //根据id查询校友资料
-            xy=session.get(XyEntity.class,id);
+            xy=session.get(Xy.class,id);
             transaction.commit();
         }
         catch (HibernateException ex){
@@ -133,7 +143,11 @@ public class XyEntityDao {
         return xy;
     }
 
-    public static boolean updateXy(XyEntity xy){
+    /*
+    校友修改自己的信息
+    更新
+     */
+    public static boolean updateXy(Xy xy){
         boolean ok=true;
         //负责被持久化对象的CRUD操作
         Session session=null;

@@ -15,23 +15,21 @@
 <form action="#" method="post">
     <table border="1">
         <tr>
-            <th>Id</th>
             <th>Name</th>
-            <th>Age</th>
             <th>Sex</th>
             <th>Phone</th>
             <th>Email</th>
+            <th>State</th>
             <th>todo</th>
         </tr>
         <c:forEach var="xy" items="${xys}">
             <tr>
-                <td>${xy.xyId}</td>
-                <td>${xy.xyUsername}</td>
-                <td>${xy.xyAge}</td>
-                <td>${xy.xySex}</td>
-                <td>${xy.xyPhone}</td>
-                <td>${xy.xyEmail}</td>
-                <td><a href="updateXyEntity.do?id=${xy.xyId}">修改</a></td>
+                <td>${xy.name}</td>
+                <td>${xy.sex}</td>
+                <td>${xy.phone}</td>
+                <td>${xy.mail}</td>
+                <td>${xy.state}</td>
+                <td><a href="updateXy.do?id=${xy.xid}">修改</a></td>
             </tr>
         </c:forEach>
     </table>
