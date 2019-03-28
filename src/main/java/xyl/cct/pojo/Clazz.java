@@ -3,7 +3,7 @@ package xyl.cct.pojo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "class", schema = "xyl", catalog = "")
+@Table(name = "class", schema = "xyl")
 public class Clazz {
     private int cid;
     private String name;

@@ -12,7 +12,7 @@
 </head>
 <body>
 <div align="center">
-    <h1>欢迎来到gayHub</h1>
+    <h1>欢迎使用校友录</h1>
 
     <div align="left" >
         <a href="login">

@@ -42,6 +42,12 @@ public class manageLy {
     @RequestMapping("/admitLy")
     public String addLy(int id) {
 
+        if(lyService.updateState(id)) {
+            System.out.println("update id "+ id);
+        }else {
+            System.out.println("update failed");
+        }
+
         // 去dao层update数据
         return "redirect:/glLy";
     }

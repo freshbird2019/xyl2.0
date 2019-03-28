@@ -23,4 +23,6 @@ public class LyService {
         return dao.delete(id);
     }
 
+    public boolean updateState(int id) { return dao.updateLy(id); }
+
 }

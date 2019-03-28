@@ -95,7 +95,6 @@ public class activityEntityDao implements dao{
     // 暂时没这功能
     public boolean edit(Object id) {
         return true;
-
     }
 
     /*

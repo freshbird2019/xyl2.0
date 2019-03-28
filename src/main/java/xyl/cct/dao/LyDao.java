@@ -118,8 +118,43 @@ public class LyDao {
         return ok;
     }
 
+    /*
+    * 通过留言审核
+     */
     public static boolean updateLy(int id) {
-        return true;
+        SessionFactory sf;
+        Session session = null;
+        Transaction transaction = null;
+
+        boolean ok = true;
+        try {
+            Configuration configuration = new Configuration().configure();
+            sf = configuration.buildSessionFactory();
+            session = sf.openSession();
+            transaction = session.beginTransaction();
+
+            //根据id找到记录
+            Object ly=session.get(Ly.class,id);
+
+            //更新
+            ((Ly) ly).setState(1);
+
+            //提交事务
+            transaction.commit();
+        } catch (Exception e) {
+            ok = false;
+            e.printStackTrace();
+            //回滚事务
+            if (transaction != null) {//事务不为空，说明事务提交不成功
+                transaction.rollback();
+                ;
+            }
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return ok;
 
     }
 

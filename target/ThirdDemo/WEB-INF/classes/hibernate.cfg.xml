@@ -4,10 +4,9 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url">jdbc:mysql://134.209.5.99:3306/xyl</property>
+    <property name="connection.url">jdbc:mysql://134.209.5.99:3306/xyl?useUnicode=true&amp;characterEncoding=UTF8</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">XYLxyl2019!?</property>
 
@@ -22,6 +21,7 @@
     <mapping class="xyl.cct.pojo.Xy"/>
     <mapping class="xyl.cct.pojo.Clazz"/>
     <mapping resource="xyl/cct/pojo/Clazz.hbm.xml"/>
+
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

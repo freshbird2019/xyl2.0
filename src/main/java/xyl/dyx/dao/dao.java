@@ -9,7 +9,7 @@ public interface dao {
     public boolean delete(Object id);
 
     // 编辑数据
-    public boolean edit(Object id);
+    public boolean edit(Object obj);
 
     // 查询,参数是id
     public Object search(Object id);
