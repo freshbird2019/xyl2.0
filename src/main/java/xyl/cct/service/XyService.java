@@ -31,4 +31,10 @@ public class XyService {
     public Xy getXyById(int id){
         return dao.getXyById(id);
     }
+
+    // 查找校友账号密码是否正确
+    public int ifCorrect(Xy xy) {
+
+        return dao.ifExist(xy);
+    }
 }

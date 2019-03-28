@@ -11,7 +11,7 @@
     <title>修改信息界面</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/update.do" method="post">
+<form action="${pageContext.request.contextPath}/updateNowin.do" method="post">
     <input type="hidden" name="xid" value="${xy.xid}"/>
     <table>
         <tr>

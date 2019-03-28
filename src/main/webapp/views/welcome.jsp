@@ -21,7 +21,7 @@
     </div>
 
     <div align="right">
-        <a href="xyRegister">
+        <a href="xyLogin">
             <input name="xy" type="button" value="校友登陆"/>
         </a>
     </div>

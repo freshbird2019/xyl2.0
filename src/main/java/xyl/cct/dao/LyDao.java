@@ -17,15 +17,10 @@ public class LyDao {
      */
     public static List<Ly> queryAll(){
         //负责被持久化对象的CRUD操作
-        Session session=null;
+        Session session=HibernateUtils.openSession();
         List<Ly> list= null;
         Transaction transaction=null;
         try{
-            //负责配置并启动hibernate，创建SessionFactor，加载hibernate.cfg.xml
-            Configuration configuration=new Configuration().configure();
-            //SessionFactor负责初始化hibernate，创建session对象
-            SessionFactory sf=configuration.buildSessionFactory();
-            session = sf.openSession();
             //负责事务相关的操作
             transaction=session.beginTransaction();
 
@@ -52,15 +47,11 @@ public class LyDao {
     校友添加留言
      */
     public static boolean add(Ly ly) {
-        SessionFactory sf;
-        Session session = null;
+        Session session = HibernateUtils.openSession();
         Transaction transaction = null;
 
         boolean ok = true;
         try {
-            Configuration configuration = new Configuration().configure();
-            sf = configuration.buildSessionFactory();
-            session = sf.openSession();
             transaction = session.beginTransaction();
             //保存记录
             session.save(ly);
@@ -86,15 +77,11 @@ public class LyDao {
     管理员删除留言
      */
     public static boolean delete(int id){
-        SessionFactory sf;
-        Session session = null;
+        Session session = HibernateUtils.openSession();
         Transaction transaction = null;
 
         boolean ok = true;
         try {
-            Configuration configuration = new Configuration().configure();
-            sf = configuration.buildSessionFactory();
-            session = sf.openSession();
             transaction = session.beginTransaction();
             //根据id找到记录
             Object ly=session.get(Ly.class,id);
@@ -122,15 +109,11 @@ public class LyDao {
     * 通过留言审核
      */
     public static boolean updateLy(int id) {
-        SessionFactory sf;
-        Session session = null;
+        Session session = HibernateUtils.openSession();
         Transaction transaction = null;
 
         boolean ok = true;
         try {
-            Configuration configuration = new Configuration().configure();
-            sf = configuration.buildSessionFactory();
-            session = sf.openSession();
             transaction = session.beginTransaction();
 
             //根据id找到记录

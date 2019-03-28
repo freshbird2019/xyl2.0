@@ -2,9 +2,7 @@ package xyl.cct.dao;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import xyl.cct.pojo.Xy;
@@ -17,16 +15,10 @@ public class XyDao {
      */
     public static List<Xy> queryAll(){
         //负责被持久化对象的CRUD操作
-        Session session=null;
+        Session session=HibernateUtils.openSession();
         List<Xy> list= null;
         Transaction transaction=null;
         try{
-            //负责配置并启动hibernate，创建SessionFactor，加载hibernate.cfg.xml
-            Configuration configuration=new Configuration().configure();
-            //SessionFactor负责初始化hibernate，创建session对象
-            SessionFactory sf=configuration.buildSessionFactory();
-            session = sf.openSession();
-            //负责事务相关的操作
             transaction=session.beginTransaction();
 
             //查询所有记录
@@ -54,15 +46,10 @@ public class XyDao {
     增加一条校友信息
      */
     public boolean addXy(Xy xy){
-        Session session=null;
+        Session session=HibernateUtils.openSession();
         boolean ok=true;
         Transaction transaction=null;
         try{
-            //负责配置并启动hibernate，创建SessionFactor，加载hibernate.cfg.xml
-            Configuration configuration=new Configuration().configure();
-            //SessionFactor负责初始化hibernate，创建session对象
-            SessionFactory sf=configuration.buildSessionFactory();
-            session = sf.openSession();
             //负责事务相关的操作
             transaction=session.beginTransaction();
 
@@ -113,15 +100,10 @@ public class XyDao {
      */
     public static Xy getXyById(int id){
         //负责被持久化对象的CRUD操作
-        Session session=null;
+        Session session=HibernateUtils.openSession();
         Xy xy=new Xy();
         Transaction transaction=null;
         try{
-            //负责配置并启动hibernate，创建SessionFactor，加载hibernate.cfg.xml
-            Configuration configuration=new Configuration().configure();
-            //SessionFactor负责初始化hibernate，创建session对象
-            SessionFactory sf=configuration.buildSessionFactory();
-            session = sf.openSession();
             //负责事务相关的操作
             transaction=session.beginTransaction();
 
@@ -150,14 +132,9 @@ public class XyDao {
     public static boolean updateXy(Xy xy){
         boolean ok=true;
         //负责被持久化对象的CRUD操作
-        Session session=null;
+        Session session=HibernateUtils.openSession();
         Transaction transaction=null;
         try{
-            //负责配置并启动hibernate，创建SessionFactor，加载hibernate.cfg.xml
-            Configuration configuration=new Configuration().configure();
-            //SessionFactor负责初始化hibernate，创建session对象
-            SessionFactory sf=configuration.buildSessionFactory();
-            session = sf.openSession();
             //负责事务相关的操作
             transaction=session.beginTransaction();
 
@@ -167,6 +144,57 @@ public class XyDao {
         }
         catch (HibernateException ex){
             ok=false;
+            ex.printStackTrace();
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }
+        finally {
+            if(session!=null&&session.isOpen()){
+                session.close();
+            }
+        }
+        return ok;
+    }
+
+    /*
+     * 判断校友是否存在
+     */
+    public static int ifExist(Xy xy) {
+        int ok=-1;
+
+        Session session=HibernateUtils.openSession();
+        Transaction transaction=null;
+        try {
+            //负责事务相关的操作
+            transaction = session.beginTransaction();
+
+            // 从数据库中获取相同用户名的
+            String name=xy.getName();
+            String hql="from Xy as xy where xy.name =:name";
+            Query hqlquery=session.createQuery(hql);
+            hqlquery.setParameter("name",name);
+            List<Xy> list=hqlquery.list();
+
+            if (list==null) { //校友账号不存在
+
+                System.out.println("id not exists");
+                ok= -1;
+            } else {    //校友账号存在，进一步判断密码是否正确
+
+                if (list.get(0).getPw().equals(xy.getPw())){
+                    // 密码正确
+                    ok = list.get(0).getXid();
+                } else {
+                    System.out.println(list.get(0).getPw()+xy.getPw());
+                    System.out.println("password incorrect");
+                    ok = -1;
+                }
+            }
+            transaction.commit();
+        }
+        catch (HibernateException ex){
+            ok=-1;
             ex.printStackTrace();
             if(transaction!=null){
                 transaction.rollback();

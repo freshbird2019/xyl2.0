@@ -24,13 +24,13 @@
         <c:forEach var="ly" items="${lys}">
             <tr>
                 <td>
-                    <input type="checkbox" name="id" value="${ly.lyId}"/>
+                    <input type="checkbox" name="id" value="${ly.lid}"/>
                 </td>
-                <td>${ly.lyDate}</td>
-                <td>${ly.lyLyr}</td>
-                <td>${ly.lyInfo}</td>
+                <td>${ly.lydate}</td>
+                <td>${ly.xyByLyxid.name}</td>
+                <td>${ly.info}</td>
                 <td>
-                    <a href="delete.do?id=${ly.lyId}">delete</a>
+                    <a href="delete.do?id=${ly.lid}">delete</a>
                 </td>
             </tr>
         </c:forEach>
