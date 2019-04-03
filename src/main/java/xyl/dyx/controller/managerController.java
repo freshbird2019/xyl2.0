@@ -4,9 +4,7 @@ import com.sun.deploy.net.HttpResponse;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import xyl.cct.service.LyService;
 import xyl.dyx.POJO.ActivityEntity;
@@ -16,6 +14,7 @@ import xyl.dyx.service.glyEntityService;
 
 import javax.annotation.Resource;
 import javax.jws.WebParam;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class managerController {
@@ -23,26 +22,17 @@ public class managerController {
     @Resource(name = "glyEntityService")
     private glyEntityService glyService;
 
-
-
-    @RequestMapping("/login")
-    public ModelAndView login() {
-
-        ModelAndView mv =new ModelAndView("glyLogin","command",new ManagerEntity());
-
-        mv.addObject("msg","欢迎登陆");
-
-        return mv;
-    }
-
+    @ResponseBody
     @RequestMapping(value = "/checkLogin")
-    public String checkLogin(@ModelAttribute ManagerEntity gly, ModelMap model) {
+    public boolean checkLogin(@RequestParam String id, @RequestParam String pw, HttpServletResponse response) {
 
+        ManagerEntity gly = new ManagerEntity();
+        gly.setId(id);
+        gly.setPassword(pw);
         if(glyService.ifCorrect(gly)) {//存在则进入主界面
-            return "glyHome";
+            return true;
         } else {
-            model.addAttribute("msg","登陆失败，请检查信息");
-            return "redirect:/login";
+            return false;
         }
 
     }

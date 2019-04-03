@@ -1,8 +1,12 @@
 package xyl.dyx.controller;
 
+import com.google.gson.Gson;
+import org.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import xyl.cct.dao.ClazzDao;
 import xyl.cct.pojo.Clazz;
@@ -12,7 +16,6 @@ import xyl.cct.service.ClazzService;
 import javax.annotation.Resource;
 import javax.jws.WebParam;
 import java.util.List;
-
 @Controller
 public class manageCla {
 
@@ -20,47 +23,55 @@ public class manageCla {
     ClazzService claSer;
 
     // 管理班级界面
+    @ResponseBody
     @RequestMapping("/glClass")
-    public ModelAndView glCla() {
+    public String glCla() {
 
-        ModelAndView mv = new ModelAndView("glClass");
-        // 获取班级列表
-        mv.addObject("classList",claSer.getAllCla());
+        List<Clazz> clazzList = claSer.getAllCla();
 
-        // 获取申请人数
-        mv.addObject("applyMap",claSer.getApplyNum());
-        return mv;
+        Gson gson = new Gson();
+
+        return gson.toJson(clazzList);
     }
 
     // 添加班级
+    @ResponseBody
     @RequestMapping("/addClass")
-    public String allClass(@ModelAttribute Clazz cla) {
+    public boolean allClass(@RequestParam String name,
+                           @RequestParam String year, @RequestParam String major,
+                            @RequestParam String college) {
+
+        Clazz cla = new Clazz();
+        cla.setCollege(college);
+        cla.setMajor(major);
+        cla.setName(name);
+        cla.setYear(year);
 
         if(claSer.addCla(cla)) {
 
-            System.out.println("add new class ");
+            return true;
 
         } else {
 
-            System.out.println("add failure");
+            return false;
 
         }
 
-        return "redirect:/glClass";
 
     }
 
     // 查看班级成员信息，id是查看班级的id
+    @ResponseBody
     @RequestMapping("/displayMember")
-    public ModelAndView displayMember(int id) {
+    public String displayMember(@RequestParam int id) {
 
         List<Xy> xyList = claSer.getAllXy(id);
 
-        ModelAndView mv = new ModelAndView("displayMember");
+        System.out.println(xyList.size());
 
-        mv.addObject("xyList",xyList);
+        Gson gson = new Gson();
 
-        return mv;
+        return gson.toJson(xyList);
     }
 
 }

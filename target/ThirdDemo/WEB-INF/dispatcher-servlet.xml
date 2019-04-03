@@ -18,6 +18,9 @@
     <mvc:resources mapping="/js/**" location="/static/js/"/>
     <mvc:resources mapping="/images/**" location="/static/images/"/>
     <mvc:default-servlet-handler />
+    <mvc:cors>
+        <mvc:mapping path="/**" />
+    </mvc:cors>
 
     <bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>

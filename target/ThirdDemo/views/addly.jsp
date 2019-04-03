@@ -11,7 +11,7 @@
     <title>留言添加</title>
 </head>
 <body>
-    <form action="${pageContext.request.contextPath}/XyaddLy.do" method="post">
+    <form action="${pageContext.request.contextPath}/XyaddLy.do?id=${nowinxy.xid}" method="post">
         <input type="text" name="info" value=""/>
         <input type="submit" name="lyok" value="liuyan"/>
     </form>

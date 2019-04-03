@@ -82,13 +82,14 @@ public class ClazzDao implements dao {
     public List<Clazz> getAll() {
         // 开启数据库操作session
         Session session = hibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+        Transaction trans = session.beginTransaction();
 
         // 获取所有活动数据
         Query query =session.createQuery("from Clazz ");
         List<Clazz> claList = query.list();
 
         // 关闭数据库操作
+        trans.commit();
         session.close();
 
         return claList;
@@ -98,13 +99,11 @@ public class ClazzDao implements dao {
     * 获取某一班级所有班级成员
     * 参数是班级id
      */
-    public static List<Xy> getAllmember(int id) {
+    public List<Xy> getAllmember(int id) {
 
         // 开启数据库操作session
         Session session = hibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-
-
 
         Clazz cla = new Clazz();
         cla.setCid(id);
@@ -120,14 +119,5 @@ public class ClazzDao implements dao {
     }
 
 
-    /*
-    //测试
-    public static void main(String[] args) {
-        List<Xy> list = getAllmember(1);
 
-        for(Xy item : list) {
-            System.out.println(item.getName());
-        }
-    }
-    */
 }
