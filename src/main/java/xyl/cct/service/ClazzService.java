@@ -58,4 +58,9 @@ public class ClazzService {
         }
         return map;
     }
+
+    // 更新班级
+    public boolean update(Clazz cla) {
+        return dao.edit(cla);
+    }
 }

@@ -1,15 +1,19 @@
 package xyl.cct.dao;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import xyl.cct.pojo.Clazz;
+import xyl.cct.pojo.Ly;
 import xyl.cct.pojo.Xy;
 import xyl.cct.service.ClazzService;
 import xyl.dyx.controller.hibernateUtil;
 import xyl.dyx.dao.dao;
 
+import java.nio.channels.SeekableByteChannel;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository("clazzDao")
@@ -65,11 +69,46 @@ public class ClazzDao implements dao {
     @Override
     public boolean edit(Object obj) {
         /*
-        * 传入参数应该是一个班级实体
-        * 不是id啊，不然咋知道要修改什么地方
+         * 传入参数应该是一个班级实体
+         * 不是id啊，不然咋知道要修改什么地方
          */
-        return false;
+
+        boolean flag = true;
+        Transaction trans = null;
+        Session session = null;
+
+        try {
+            // 开启数据库操作session
+            session = hibernateUtil.getSessionFactory().openSession();
+            trans = session.beginTransaction();
+
+
+            // 更新数据
+            session.update(obj);
+
+
+            System.out.println("update new class " );
+
+            // commit
+            trans.commit();
+
+
+        }catch (Exception e) {
+            flag = false;
+            e.printStackTrace();
+
+            // rollback
+            if(trans != null) {
+                trans.rollback();
+            }
+        }finally {
+            session.close();
+        }
+
+        return flag;
+
     }
+
 
     @Override
     public Object search(Object id) {
@@ -101,21 +140,44 @@ public class ClazzDao implements dao {
      */
     public List<Xy> getAllmember(int id) {
 
-        // 开启数据库操作session
-        Session session = hibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+        boolean flag = true;
+        Transaction trans = null;
+        Session session = null;
+        List<Xy> xyList = new ArrayList<>();
 
-        Clazz cla = new Clazz();
-        cla.setCid(id);
-        // 获取所有活动数据
-        String hql = "from Xy as xy where xy.clazzByClassid="+id;
-        Query query =session.createQuery(hql);
-        List<Xy> xyList = query.list();
+        try {
+            // 开启数据库操作session
+            session = hibernateUtil.getSessionFactory().openSession();
+            trans = session.beginTransaction();
 
-        // 关闭数据库操作
-        session.close();
+            Clazz cla = new Clazz();
+            cla.setCid(id);
+            // 获取所有活动数据
+            String hql = "from Xy as xy where xy.clazzByClassid="+id;
+
+            Query query =session.createQuery(hql);
+            xyList = query.list();
+
+            //Hibernate.initialize(xyList);
+
+            // commit
+            trans.commit();
+
+
+        }catch (Exception e) {
+            flag = false;
+            e.printStackTrace();
+
+            // rollback
+            if(trans != null) {
+                trans.rollback();
+            }
+        }finally {
+            session.close();
+        }
 
         return xyList;
+
     }
 
 

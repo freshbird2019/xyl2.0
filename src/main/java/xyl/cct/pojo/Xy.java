@@ -124,7 +124,7 @@ public class Xy {
         this.liesByXid = liesByXid;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "classid", referencedColumnName = "cid")
     public Clazz getClazzByClassid() {
         return clazzByClassid;

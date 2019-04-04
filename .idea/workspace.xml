@@ -6,33 +6,89 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f7a1b7d-4076-411f-8de5-12c98c1bb249" name="Default Changelist" comment="显示某个班级成员时出现懒加载的问题。好像是校友和班级存在一对多的关系，然后报的proxy错啥的。这个下回处理。&#10;&#10;我们这个系统是前后端分离的，所以返回数据大概都需要包装成json的格式了。&#10;&#10;添加活动的表，等把现在的系统都完善了再添加吧。😭&#10;&#10;问题应该不大把，我猜。。。">
+    <list default="true" id="1f7a1b7d-4076-411f-8de5-12c98c1bb249" name="Default Changelist" comment="针对前后端分离，基本改好了原来的所有功能，然后解决了这个hibernate懒加载的问题，关键在于我在xy里面找某班所有成员的时候，获取这个xy list，中间有个留言的一对多的外键，这里出了问题，然后我再把list变成json格式就出了问题，怎么从源头解决还没搞明白，不过转json的时候，去掉这个属性就能解决了！&#10;下一步需要再添加一些新功能了！加油！！！！">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/b041907b-2b63-4ca1-a24b-7438cb9e4363.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xyl/dyx/service/Exclusion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/ActivityEntity.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/ManagerEntity.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/controller/ClazzController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/controller/JumpController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/controller/LyController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/controller/XyController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/dao/ClazzDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/dao/HibernateUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/dao/LyDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/dao/XyDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/pojo/Clazz.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/pojo/Clazz.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/pojo/Ly.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/pojo/Ly.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/pojo/Xy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/pojo/Xy.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/service/ClazzService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/service/LyService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/cct/service/XyService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/controller/manageActivity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/controller/manageCla.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/controller/manageLy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/welcomeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/lib/commons-beanutils-1.8.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/lib/commons-collections-3.2.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/lib/commons-lang-2.5.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/lib/commons-logging-1.1.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/lib/ezmorph-1.0.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/lib/gson-2.2.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/lib/json-20180813.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/lib/mysql-connector-java-8.0.15.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/lib/protobuf-java-3.6.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/views/addAc.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/views/classdisplay.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/views/displayAc.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/views/displayMember.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/views/glClass.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/views/glLy.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/views/glyHome.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/views/glyLogin.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/views/welcome.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/views/xyHome.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/views/xylogin.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ThirdDemo/views/xylydisplay.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ActivityEntity.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ManagerEntity.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/controller/ClazzController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/controller/JumpController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/controller/LyController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/controller/XyController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/dao/ClazzDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/dao/HibernateUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/dao/LyDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/dao/XyDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/pojo/Clazz.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/pojo/Clazz.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/pojo/Ly.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/pojo/Ly.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/pojo/Xy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/pojo/Xy.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/service/ClazzService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/service/LyService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/cct/service/XyService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/dyx/controller/manageActivity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/dyx/controller/manageCla.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/dyx/controller/manageLy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/dyx/controller/managerController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/xyl/welcomeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xyl/cct/dao/ClazzDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xyl/cct/dao/ClazzDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Xy.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Xy.hbm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Xy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Xy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xyl/cct/service/ClazzService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xyl/cct/service/ClazzService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageCla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageCla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/managerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/managerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xyl/welcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xyl/welcomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageLy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageLy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ThirdDemo/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/ThirdDemo/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/POJO/ActivityEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/POJO/ActivityEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/POJO/ManagerEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/POJO/ManagerEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/controller/hibernateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/controller/hibernateUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/controller/managerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/controller/managerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/dao/glyEntityDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/dao/glyEntityDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/service/activityEntityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/service/activityEntityService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/service/glyEntityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/classes/xyl/dyx/service/glyEntityService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/lib/commons-logging-1.2.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ThirdDemo/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ThirdDemo/views/addly.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ThirdDemo/views/addly.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xyl/dyx/POJO/ActivityEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/xyl/dyx/POJO/ActivityEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xyl/dyx/POJO/ManagerEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/xyl/dyx/POJO/ManagerEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xyl/dyx/controller/hibernateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/xyl/dyx/controller/hibernateUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xyl/dyx/dao/glyEntityDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/xyl/dyx/dao/glyEntityDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xyl/dyx/service/activityEntityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/xyl/dyx/service/activityEntityService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xyl/dyx/service/glyEntityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/xyl/dyx/service/glyEntityService.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,10 +99,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/xyl2_0$Tomcat_9_0_13.ic" NAME="Tomcat 9.0.13 Coverage Results" MODIFIED="1554293056376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/xyl2_0$Tomcat_9_0_13.ic" NAME="Tomcat 9.0.13 Coverage Results" MODIFIED="1554375283272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="162" />
+    <option name="myElementSize" value="157" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -80,6 +136,13 @@
         <item name="xyl@134.209.5.99" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="xyl: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="ly: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="xyl@134.209.5.99" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="xyl: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="xy: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
@@ -89,165 +152,62 @@
     <favorites_list name="xyl2.0" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6515764">
-      <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.30758017">
-          <split-first>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/controller/LyController.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="510">
-                      <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
-                      <folding>
-                        <element signature="imports" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/main/java/xyl/welcomeController.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="195">
-                      <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-                      <folding>
-                        <element signature="imports" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/controller/managerController.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="225">
-                      <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="285">
-                      <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/main/webapp/views/xylydisplay.jsp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="435">
-                      <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/main/webapp/views/xyHome.jsp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="285">
-                      <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/main/webapp/views/addly.jsp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="195">
-                      <caret line="13" column="80" selection-start-line="13" selection-start-column="80" selection-end-line="13" selection-end-column="80" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/dao/LyDao.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="750">
-                      <caret line="58" selection-start-line="58" selection-end-line="58" />
-                      <folding>
-                        <element signature="imports" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-first>
-          <split-second>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageCla.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="66">
-                      <caret line="67" column="37" lean-forward="true" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
-                      <folding>
-                        <element signature="imports" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/service/ClazzService.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="-90">
-                      <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-                      <folding>
-                        <element signature="imports" expanded="true" />
-                        <element signature="e#482#483#0" expanded="true" />
-                        <element signature="e#525#526#0" expanded="true" />
-                        <element signature="e#664#665#0" expanded="true" />
-                        <element signature="e#699#700#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/dao/ClazzDao.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="-112">
-                      <caret line="90" column="18" lean-forward="true" selection-start-line="90" selection-start-column="18" selection-end-line="90" selection-end-column="18" />
-                      <folding>
-                        <element signature="imports" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-second>
-        </splitter>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/xyl/welcomeController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="250">
-                  <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/controller/managerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageCla.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="111" column="6" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/service/Exclusion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/service/XyService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+              <folding>
+                <element signature="e#462#463#0" expanded="true" />
+                <element signature="e#501#502#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
         <option value="Tag Library Descriptor" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -255,6 +215,12 @@
     <findStrings>
       <find>display</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\Administrator\Desktop\xyl3.0\xyl2.0\src\main\java\xyl</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
@@ -263,15 +229,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/ManagerEntity.hbm.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/POJO/ManagerEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/POJO/ActivityEntity.java" />
         <option value="$PROJECT_DIR$/log.md" />
         <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageXy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Ly.java" />
         <option value="$PROJECT_DIR$/src/main/java/xyl/cct/service/LyService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageLy.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/glLy.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/dao/dao.java" />
         <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/dao/activityEntityDao.java" />
@@ -286,7 +247,6 @@
         <option value="$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Clazz.java" />
         <option value="$PROJECT_DIR$/src/main/java/xyl/cct/service/clazzService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/displayMember.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/xyl/cct/service/ClazzService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/glClass.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/glyHome.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/welcome.jsp" />
@@ -308,12 +268,18 @@
         <option value="$PROJECT_DIR$/src/main/java/xyl/cct/controller/LyController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/xyl/welcomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/managerController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageCla.java" />
-        <option value="$PROJECT_DIR$/src/main/java/xyl/cct/dao/ClazzDao.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Xy.java" />
         <option value="$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Xy.hbm.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/xyl/test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/service/Exclusion.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageLy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/xyl/cct/service/ClazzService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/xyl/cct/dao/ClazzDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageCla.java" />
       </list>
     </option>
   </component>
@@ -354,9 +320,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="519" />
-    <option name="width" value="981" />
-    <option name="height" value="1032" />
+    <option name="x" value="949" />
+    <option name="width" value="980" />
+    <option name="height" value="1031" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -364,135 +330,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xyl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xyl" type="462c0819:PsiDirectoryNode" />
-              <item name="cct" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xyl" type="462c0819:PsiDirectoryNode" />
-              <item name="cct" type="462c0819:PsiDirectoryNode" />
-              <item name="pojo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xyl" type="462c0819:PsiDirectoryNode" />
-              <item name="dyx" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xyl" type="462c0819:PsiDirectoryNode" />
-              <item name="dyx" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xyl" type="462c0819:PsiDirectoryNode" />
-              <item name="dyx" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xyl" type="462c0819:PsiDirectoryNode" />
-              <item name="dyx" type="462c0819:PsiDirectoryNode" />
-              <item name="POJO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xyl" type="462c0819:PsiDirectoryNode" />
-              <item name="dyx" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -640,6 +477,165 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xyl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xyl" type="462c0819:PsiDirectoryNode" />
+              <item name="cct" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xyl" type="462c0819:PsiDirectoryNode" />
+              <item name="cct" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xyl" type="462c0819:PsiDirectoryNode" />
+              <item name="cct" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xyl" type="462c0819:PsiDirectoryNode" />
+              <item name="cct" type="462c0819:PsiDirectoryNode" />
+              <item name="pojo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xyl" type="462c0819:PsiDirectoryNode" />
+              <item name="cct" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xyl" type="462c0819:PsiDirectoryNode" />
+              <item name="dyx" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xyl" type="462c0819:PsiDirectoryNode" />
+              <item name="dyx" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xyl" type="462c0819:PsiDirectoryNode" />
+              <item name="dyx" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xyl" type="462c0819:PsiDirectoryNode" />
+              <item name="dyx" type="462c0819:PsiDirectoryNode" />
+              <item name="POJO" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xyl" type="462c0819:PsiDirectoryNode" />
+              <item name="dyx" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xyl2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xyl2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -647,7 +643,7 @@
     <property name="JPA.DatabaseSchemaImportDialog" value="b041907b-2b63-4ca1-a24b-7438cb9e4363" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554293434124" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554376440204" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -709,6 +705,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="xyl.cct.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="xyl.test" />
+      <module name="ThirdDemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="xyl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -795,10 +804,12 @@
     <list>
       <item itemvalue="Application.LyDao" />
       <item itemvalue="Application.ClazzDao" />
+      <item itemvalue="Application.test" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.13" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.test" />
         <item itemvalue="Application.ClazzDao" />
         <item itemvalue="Application.LyDao" />
       </list>
@@ -840,7 +851,10 @@
       <workItem from="1553776962201" duration="9553000" />
       <workItem from="1554024543301" duration="4218000" />
       <workItem from="1554288511279" duration="1205000" />
-      <workItem from="1554290419411" duration="3149000" />
+      <workItem from="1554290419411" duration="3188000" />
+      <workItem from="1554351426497" duration="2819000" />
+      <workItem from="1554366780659" duration="3509000" />
+      <workItem from="1554372524414" duration="4103000" />
     </task>
     <task id="LOCAL-00001" summary="log里面的东西有点纰漏修改了一下。然后那个hibernate配置文件url后面加的一串是怕中文乱码，反正加了也不会错。。。">
       <created>1553606010891</created>
@@ -863,11 +877,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553699528420</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="显示某个班级成员时出现懒加载的问题。好像是校友和班级存在一对多的关系，然后报的proxy错啥的。这个下回处理。&#10;&#10;我们这个系统是前后端分离的，所以返回数据大概都需要包装成json的格式了。&#10;&#10;添加活动的表，等把现在的系统都完善了再添加吧。😭&#10;&#10;问题应该不大把，我猜。。。">
+      <created>1554293628427</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1554293628428</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137893000" />
+    <option name="totallyTimeSpent" value="148363000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -880,8 +901,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49380532" visible="true" weight="0.14632174" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49380532" visible="true" weight="0.098625705" />
       <window_info id="Structure" order="1" sideWeight="0.50080514" side_tool="true" weight="0.25626203" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -892,24 +914,23 @@
       <window_info id="Persistence" order="8" sideWeight="0.5061947" side_tool="true" weight="0.24818109" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3196481" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.19469027" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.460177" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.43539822" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.43893805" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32920355" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.32920355" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32854578" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.32850242" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32743362" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.32920355" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32854578" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.32850242" />
       <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" weight="0.32854578" />
       <window_info anchor="bottom" id="Version Control" order="15" />
       <window_info anchor="bottom" id="Database Console" order="16" weight="0.28152493" />
-      <window_info anchor="right" id="Coverage" sideWeight="0.5016949" side_tool="true" weight="0.33306387" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.24939467" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.2489895" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -917,9 +938,10 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info anchor="right" id="Maven" order="8" weight="0.32902184" />
+      <window_info anchor="right" id="Coverage" order="9" sideWeight="0.5016949" side_tool="true" weight="0.33306387" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49380532" weight="0.14632174" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49380532" visible="true" weight="0.23443815" />
       <window_info id="Structure" order="1" sideWeight="0.50080514" side_tool="true" weight="0.25626203" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -930,8 +952,8 @@
       <window_info id="Persistence" order="8" sideWeight="0.5061947" side_tool="true" weight="0.24818109" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3196481" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19469027" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.460177" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.49557522" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.123893805" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32920355" />
@@ -945,16 +967,16 @@
       <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" weight="0.32854578" />
       <window_info anchor="bottom" id="Version Control" order="15" />
       <window_info anchor="bottom" id="Database Console" order="16" weight="0.28152493" />
-      <window_info anchor="right" id="Coverage" order="0" sideWeight="0.5016949" side_tool="true" weight="0.33306387" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.24939467" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" sideWeight="0.49830508" weight="0.33306387" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Maven" order="9" weight="0.32902184" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24939467" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.49830508" weight="0.33306387" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" id="Maven" order="8" weight="0.32902184" />
+      <window_info anchor="right" id="Coverage" order="9" sideWeight="0.5016949" side_tool="true" weight="0.33306387" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -966,20 +988,14 @@
     <MESSAGE value="加了管理留言的界面，没写好。" />
     <MESSAGE value="gly已经可以删除留言了&#10;但是怎么审核留言通过还有点问题&#10;然后前端显示信息也有点问题&#10;总的来说进度海星" />
     <MESSAGE value="显示某个班级成员时出现懒加载的问题。好像是校友和班级存在一对多的关系，然后报的proxy错啥的。这个下回处理。&#10;&#10;我们这个系统是前后端分离的，所以返回数据大概都需要包装成json的格式了。&#10;&#10;添加活动的表，等把现在的系统都完善了再添加吧。&#10;&#10;问题应该不大把，我猜。。。" />
-    <option name="LAST_COMMIT_MESSAGE" value="显示某个班级成员时出现懒加载的问题。好像是校友和班级存在一对多的关系，然后报的proxy错啥的。这个下回处理。&#10;&#10;我们这个系统是前后端分离的，所以返回数据大概都需要包装成json的格式了。&#10;&#10;添加活动的表，等把现在的系统都完善了再添加吧。&#10;&#10;问题应该不大把，我猜。。。" />
+    <MESSAGE value="针对前后端分离，基本改好了原来的所有功能，然后解决了这个hibernate懒加载的问题，关键在于我在xy里面找某班所有成员的时候，获取这个xy list，中间有个留言的一对多的外键，这里出了问题，然后我再把list变成json格式就出了问题，怎么从源头解决还没搞明白，不过转json的时候，去掉这个属性就能解决了！&#10;下一步需要再添加一些新功能了！加油！！！！" />
+    <option name="LAST_COMMIT_MESSAGE" value="针对前后端分离，基本改好了原来的所有功能，然后解决了这个hibernate懒加载的问题，关键在于我在xy里面找某班所有成员的时候，获取这个xy list，中间有个留言的一对多的外键，这里出了问题，然后我再把list变成json格式就出了问题，怎么从源头解决还没搞明白，不过转json的时候，去掉这个属性就能解决了！&#10;下一步需要再添加一些新功能了！加油！！！！" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/jsp/lib/jsp-impl.jar!/standardSchemas/jspdirectives2_1.xsd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="157" column="8" selection-start-line="157" selection-start-column="8" selection-end-line="157" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/displayMember.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1068,16 +1084,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b041907b-2b63-4ca1-a24b-7438cb9e4363/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -1109,13 +1115,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
@@ -1133,10 +1132,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/service/activityEntityService.java">
+    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/xy">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Clazz.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+        <state relative-caret-position="210">
+          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Clazz.hbm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="52" lean-forward="true" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -1147,13 +1167,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1178,9 +1191,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.2.2/gson-2.2.2-sources.jar!/com/google/gson/internal/bind/TypeAdapterRuntimeTypeWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.4.1.Final/hibernate-core-5.4.1.Final-sources.jar!/org/hibernate/collection/spi/PersistentCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="276" column="9" selection-start-line="276" selection-start-column="9" selection-end-line="276" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.4.1.Final/hibernate-core-5.4.1.Final-sources.jar!/org/hibernate/Hibernate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="63" column="56" selection-start-line="63" selection-start-column="56" selection-end-line="63" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Xy.hbm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/dao/LyDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
+        <state relative-caret-position="669">
           <caret line="58" selection-start-line="58" selection-end-line="58" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1188,132 +1232,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/welcomeController.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.4.1.Final/hibernate-core-5.4.1.Final-sources.jar!/org/hibernate/collection/internal/AbstractPersistentCollection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        <state relative-caret-position="259">
+          <caret line="613" column="39" selection-start-line="613" selection-start-column="39" selection-end-line="613" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Ly.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/ly">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="43" lean-forward="true" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/activity">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/xy">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b041907b-2b63-4ca1-a24b-7438cb9e4363/schema/xyl/table/class">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Clazz.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageLy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+        <state relative-caret-position="345">
+          <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageCla.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/POJO/ActivityEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="67" column="37" lean-forward="true" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
+        <state relative-caret-position="165">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/welcomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Ly.hbm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/service/activityEntityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1322,36 +1337,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Xy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="60">
+          <caret line="14" column="36" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="36" />
+          <folding>
+            <element signature="e#484#485#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/controller/managerController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/service/XyService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Xy.hbm.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="31" column="45" lean-forward="true" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/pojo/Clazz.hbm.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="52" lean-forward="true" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+        <state relative-caret-position="195">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding>
+            <element signature="e#462#463#0" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/dao/ClazzDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-112">
-          <caret line="90" column="18" lean-forward="true" selection-start-line="90" selection-start-column="18" selection-end-line="90" selection-end-column="18" />
+        <state relative-caret-position="706">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1360,14 +1369,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/xyl/cct/service/ClazzService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+        <state relative-caret-position="376">
+          <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#482#483#0" expanded="true" />
             <element signature="e#525#526#0" expanded="true" />
             <element signature="e#664#665#0" expanded="true" />
             <element signature="e#699#700#0" expanded="true" />
+            <element signature="e#1374#1375#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/controller/managerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/controller/manageCla.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="111" column="6" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xyl/dyx/service/Exclusion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

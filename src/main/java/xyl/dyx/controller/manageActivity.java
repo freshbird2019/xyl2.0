@@ -1,14 +1,14 @@
 package xyl.dyx.controller;
 
+import com.google.gson.Gson;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import xyl.dyx.POJO.ActivityEntity;
 import xyl.dyx.service.activityEntityService;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 public class manageActivity {
@@ -18,43 +18,53 @@ public class manageActivity {
     /*
      * 获取所有活动信息
      */
-    @RequestMapping(value = "/activityPg",method = RequestMethod.GET)
-    public ModelAndView activityPg() {
-        ModelAndView mv = new ModelAndView("displayAc");
-        mv.addObject("activities",acService.getAllActivities());
-        return mv;
+    @ResponseBody
+    @RequestMapping(value = "/activityPg")
+    public String activityPg() {
+
+        List<ActivityEntity> acList = acService.getAllActivities();
+
+        Gson gson = new Gson();
+
+        return gson.toJson(acList);
+
     }
     /*
      * 删除活动
      */
+    @ResponseBody
     @RequestMapping(value = "/deleteAc.do")
-    public String delete(int id) {
+    public boolean delete(@RequestParam int id) {
 
 
         if(acService.deleteActivityEntity(id)) {
-            System.out.println("delete successfully");
+            return true;
         } else {
-            System.out.println("o ho");
+            return false;
         }
-
-        return "redirect:/activityPg";
     }
 
     /*
      * 添加活动
      */
+    @ResponseBody
     @RequestMapping(value = "/addAc.do")
-    public ModelAndView add() {
-        return new ModelAndView("addAc","command",new ActivityEntity());
+    public boolean add(@RequestParam String name, @RequestParam String time,
+                       @RequestParam String location, @RequestParam int num,
+                       @RequestParam String description) {
+
+        ActivityEntity ac = new ActivityEntity();
+        ac.setDescription(description);
+        ac.setLocation(location);
+        ac.setName(name);
+        ac.setTime(time);
+        ac.setNum(num);
+
+        if(acService.addActivityEntity(ac)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    @RequestMapping(value = "/submitAcInfo.do")
-    public String submitAcInfo(@ModelAttribute ActivityEntity ac) {
-        if(acService.addActivityEntity(ac)) {
-            System.out.println("add new ac " + ac.getName());
-        } else {
-            System.out.println("add failed");
-        }
-        return "redirect:/activityPg";
-    }
 }

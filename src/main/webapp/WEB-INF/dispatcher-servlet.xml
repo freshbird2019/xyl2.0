@@ -22,6 +22,15 @@
         <mvc:mapping path="/**" />
     </mvc:cors>
 
+    <!--处理json返回前端中文变问号的问题-->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes"  value="application/json;charset=UTF-8"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
     <bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/views/"/>
@@ -30,4 +39,6 @@
     </bean>
 
     <context:component-scan base-package="xyl"/>
+
+
 </beans>
