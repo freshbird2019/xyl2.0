@@ -1,6 +1,7 @@
 package xyl.dyx.service;
 
 import org.springframework.stereotype.Service;
+import xyl.cct.pojo.Xy;
 import xyl.dyx.POJO.ActivityEntity;
 import xyl.dyx.dao.activityEntityDao;
 
@@ -33,5 +34,18 @@ public class activityEntityService {
         return dao.edit(id);
     }
 
+    // 参加活动
+    public boolean joinAc(int aid, int xid) {
+        return dao.joinAc(aid, xid);
+    }
 
+    // 获取活动人员
+    public List<Xy> getAcXy(int aid) {
+        return dao.getAcXy(aid);
+    }
+
+    // 获取参加的活动
+    public List<ActivityEntity> getXyAc(int xid) {
+        return dao.getXyAc(xid);
+    }
 }

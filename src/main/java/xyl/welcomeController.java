@@ -21,7 +21,7 @@ public class welcomeController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/test")
+    @RequestMapping(value = "/testt")
     public String test() {
         ManagerEntity gly = new ManagerEntity();
 

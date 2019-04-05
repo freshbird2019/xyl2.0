@@ -1,12 +1,16 @@
 package xyl.dyx.dao;
 
+import org.hibernate.QueryException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
+import xyl.cct.pojo.Xy;
 import xyl.dyx.POJO.ActivityEntity;
+import xyl.dyx.POJO.JoinAcEntity;
 import xyl.dyx.controller.hibernateUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository("activityEntityDao")
@@ -142,6 +146,128 @@ public class activityEntityDao implements dao{
 
         }
 
+    }
 
+    // 加入活动
+    public boolean joinAc(int aid, int xid) {
+
+        boolean flag = true;
+        Transaction trans = null;
+        Session session = null;
+
+        try {
+            // 开启数据库操作session
+            session = hibernateUtil.getSessionFactory().openSession();
+            trans = session.beginTransaction();
+
+
+
+
+            //判断是否人数已满
+            String hql = "from ActivityEntity as ac where ac.aid="+aid;
+            Query query = session.createQuery(hql);
+
+
+            int max_num = query.list().size();
+
+            hql = "from JoinAcEntity as ja where ja.aid="+aid;
+            query = session.createQuery(hql);
+
+            int curr_num = query.list().size();
+
+            if(max_num>curr_num) {
+                JoinAcEntity ja = new JoinAcEntity();
+                ja.setAid(aid);
+                ja.setXid(xid);
+
+                session.save(ja);
+            } else {
+                flag=false;
+            }
+
+            trans.commit();
+
+        }catch (Exception e) {
+            flag = false;
+            e.printStackTrace();
+
+            // rollback
+            if(trans != null) {
+                trans.rollback();
+            }
+        }finally {
+            session.close();
+        }
+
+        return flag;
+    }
+
+    // 获取某活动报名人员信息
+    public List<Xy> getAcXy(int aid) {
+
+
+        boolean flag = true;
+        Transaction trans = null;
+        Session session = null;
+        List<Xy> xy = new ArrayList<>();
+
+        try {
+            // 开启数据库操作session
+            session = hibernateUtil.getSessionFactory().openSession();
+            trans = session.beginTransaction();
+
+            String hql = "select xy from Xy xy, JoinAcEntity ja where xy.xid = ja.xid and ja.aid ="+aid;
+            Query query =session.createQuery(hql);
+
+            xy = query.list();
+
+            trans.commit();
+
+        }catch (Exception e) {
+            flag = false;
+            e.printStackTrace();
+
+            // rollback
+            if(trans != null) {
+                trans.rollback();
+            }
+        }finally {
+            session.close();
+        }
+
+        return xy;
+    }
+
+    //获取某用户参加的所有活动
+    public List<ActivityEntity> getXyAc(int xid) {
+        boolean flag = true;
+        Transaction trans = null;
+        Session session = null;
+        List<ActivityEntity> ac = new ArrayList<>();
+
+        try {
+            // 开启数据库操作session
+            session = hibernateUtil.getSessionFactory().openSession();
+            trans = session.beginTransaction();
+
+            String hql = "select ac from ActivityEntity ac, JoinAcEntity ja where ac.aid = ja.xid and ja.xid ="+xid;
+            Query query =session.createQuery(hql);
+
+            ac = query.list();
+
+            trans.commit();
+
+        }catch (Exception e) {
+            flag = false;
+            e.printStackTrace();
+
+            // rollback
+            if(trans != null) {
+                trans.rollback();
+            }
+        }finally {
+            session.close();
+        }
+        return  ac;
     }
 }
