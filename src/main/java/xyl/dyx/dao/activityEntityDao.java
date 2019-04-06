@@ -161,8 +161,6 @@ public class activityEntityDao implements dao{
             trans = session.beginTransaction();
 
 
-
-
             //判断是否人数已满
             String hql = "from ActivityEntity as ac where ac.aid="+aid;
             Query query = session.createQuery(hql);
@@ -174,6 +172,8 @@ public class activityEntityDao implements dao{
             query = session.createQuery(hql);
 
             int curr_num = query.list().size();
+
+            System.out.println("aid "+aid+"cid "+xid+" curr" +curr_num+" num "+ max_num);
 
             if(max_num>curr_num) {
                 JoinAcEntity ja = new JoinAcEntity();
@@ -205,8 +205,6 @@ public class activityEntityDao implements dao{
     // 获取某活动报名人员信息
     public List<Xy> getAcXy(int aid) {
 
-
-        boolean flag = true;
         Transaction trans = null;
         Session session = null;
         List<Xy> xy = new ArrayList<>();
@@ -221,13 +219,13 @@ public class activityEntityDao implements dao{
 
             xy = query.list();
 
+            System.out.println(xy.size());
+
             trans.commit();
 
         }catch (Exception e) {
-            flag = false;
             e.printStackTrace();
 
-            // rollback
             if(trans != null) {
                 trans.rollback();
             }
@@ -235,12 +233,16 @@ public class activityEntityDao implements dao{
             session.close();
         }
 
-        return xy;
+        if(xy.size() == 0) {
+            return null;
+        } else {
+            return xy;
+        }
     }
 
     //获取某用户参加的所有活动
     public List<ActivityEntity> getXyAc(int xid) {
-        boolean flag = true;
+
         Transaction trans = null;
         Session session = null;
         List<ActivityEntity> ac = new ArrayList<>();
@@ -250,15 +252,18 @@ public class activityEntityDao implements dao{
             session = hibernateUtil.getSessionFactory().openSession();
             trans = session.beginTransaction();
 
-            String hql = "select ac from ActivityEntity ac, JoinAcEntity ja where ac.aid = ja.xid and ja.xid ="+xid;
+            String hql = "select ac from ActivityEntity ac, JoinAcEntity ja where ac.aid = ja.aid and ja.xid ="+xid;
             Query query =session.createQuery(hql);
 
             ac = query.list();
+            System.out.println("!!!");
+
+            System.out.println("???" + ac.size());
 
             trans.commit();
 
         }catch (Exception e) {
-            flag = false;
+
             e.printStackTrace();
 
             // rollback
@@ -268,6 +273,12 @@ public class activityEntityDao implements dao{
         }finally {
             session.close();
         }
-        return  ac;
+
+        if(ac.size() == 0) {
+            return null;
+        } else {
+            return  ac;
+        }
+
     }
 }

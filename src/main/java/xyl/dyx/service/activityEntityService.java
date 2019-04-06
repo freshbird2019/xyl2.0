@@ -45,7 +45,7 @@ public class activityEntityService {
     }
 
     // 获取参加的活动
-    public List<ActivityEntity> getXyAc(int xid) {
+    public List<ActivityEntity> getXyAcSer(int xid) {
         return dao.getXyAc(xid);
     }
 }

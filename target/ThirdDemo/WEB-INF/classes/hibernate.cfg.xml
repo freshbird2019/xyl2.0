@@ -25,6 +25,8 @@
     <mapping class="xyl.cct.pojo.Xy"/>
     <mapping class="xyl.cct.pojo.Clazz"/>
     <mapping resource="xyl/cct/pojo/Clazz.hbm.xml"/>
+    <mapping class="xyl.dyx.POJO.JoinAcEntity"/>
+    <mapping resource="JoinAcEntity.hbm.xml"/>
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 
