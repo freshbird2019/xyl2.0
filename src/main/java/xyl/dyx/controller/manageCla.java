@@ -2,12 +2,12 @@ package xyl.dyx.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONArray;
+import org.json.JSONObject;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import xyl.cct.service.XyService;
 import xyl.dyx.service.Exclusion;
@@ -18,6 +18,7 @@ import xyl.cct.service.ClazzService;
 
 import javax.annotation.Resource;
 import javax.jws.WebParam;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 @Controller
@@ -44,15 +45,17 @@ public class manageCla {
     // 添加班级
     @ResponseBody
     @RequestMapping("/addClass")
-    public boolean allClass(@RequestParam String name,
-                           @RequestParam String year, @RequestParam String major,
-                            @RequestParam String college) {
+    public boolean allClass(@RequestBody String data) {
 
         Clazz cla = new Clazz();
-        cla.setCollege(college);
-        cla.setMajor(major);
-        cla.setName(name);
-        cla.setYear(year);
+        ObjectMapper jsonTransfer = new ObjectMapper();
+        try {
+            cla = jsonTransfer.readValue(data,Clazz.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(cla.getName());
 
         if(claSer.addCla(cla)) {
 
@@ -104,7 +107,7 @@ public class manageCla {
     // 更新班级信息
     @ResponseBody
     @RequestMapping("/updateCla.do")
-    public boolean updateXy(@RequestParam String name,
+    public boolean updateCla(@RequestParam String name,
                            @RequestParam String year, @RequestParam String major,
                            @RequestParam String college) {
 
@@ -120,6 +123,18 @@ public class manageCla {
             return false;
         }
 
+    }
+
+    //删除班级
+    @ResponseBody
+    @RequestMapping("/deleteCla.do")
+    public boolean deleteCla(@RequestParam int cid) {
+
+        if(claSer.deleteCla(cid)){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

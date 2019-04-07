@@ -63,4 +63,9 @@ public class ClazzService {
     public boolean update(Clazz cla) {
         return dao.edit(cla);
     }
+
+    // 删除班级
+    public  boolean deleteCla(int id) {
+        return dao.delete(id);
+    }
 }

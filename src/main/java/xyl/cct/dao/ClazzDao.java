@@ -61,9 +61,36 @@ public class ClazzDao implements dao {
 
     @Override
     public boolean delete(Object id) {
-        // 存在问题暂不实现
-        // 不知道应不应该删除所有班级成员
-        return false;
+        Session session = hibernateUtil.getSessionFactory().openSession();
+        Transaction trans = session.beginTransaction();
+        boolean flag = true;
+
+        try {
+
+
+            Clazz cla = new Clazz();
+            cla.setCid((Integer)id);
+
+            session.delete(cla);
+
+            // commit
+            trans.commit();
+
+
+        }catch (Exception e) {
+            flag = false;
+            e.printStackTrace();
+
+            // rollback
+            if(trans != null) {
+                trans.rollback();
+            }
+        }finally {
+            session.close();
+        }
+
+        return flag;
+
     }
 
     @Override
