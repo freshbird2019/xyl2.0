@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
+import xyl.cct.pojo.Ly;
 import xyl.cct.pojo.Xy;
 import java.util.List;
 
@@ -277,4 +278,6 @@ public class XyDao {
         }
         return ok;
     }
+
+
 }
