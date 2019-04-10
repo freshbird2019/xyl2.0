@@ -13,5 +13,8 @@
         <property name="pw" column="pw"/>
         <property name="state" column="state"/>
         <property name="address" column="address"/>
+        <many-to-one name="clazzByClassid" class="xyl.cct.pojo.Clazz" lazy="false" fetch="join" >
+            <column name="classid" not-null="false"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

@@ -3,6 +3,7 @@ package xyl.cct.pojo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "class", schema = "xyl")
@@ -17,6 +18,7 @@ public class Clazz {
     private String major;
     @JsonProperty(value = "College")
     private String college;
+    private Collection<Xy> xiesByCid;
 
     @Id
     @Column(name = "cid", nullable = false)
@@ -92,5 +94,14 @@ public class Clazz {
         result = 31 * result + (major != null ? major.hashCode() : 0);
         result = 31 * result + (college != null ? college.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "clazzByClassid")
+    public Collection<Xy> getXiesByCid() {
+        return xiesByCid;
+    }
+
+    public void setXiesByCid(Collection<Xy> xiesByCid) {
+        this.xiesByCid = xiesByCid;
     }
 }
