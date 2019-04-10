@@ -45,15 +45,15 @@ public class manageCla {
     // 添加班级
     @ResponseBody
     @RequestMapping("/addClass")
-    public boolean allClass(@RequestBody String data) {
+    public boolean allClass(String name,String year,  String major, String college) {
 
         Clazz cla = new Clazz();
-        ObjectMapper jsonTransfer = new ObjectMapper();
-        try {
-            cla = jsonTransfer.readValue(data,Clazz.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        cla.setName(name);
+        cla.setYear(year);
+        cla.setYear(year);
+        cla.setMajor(major);
+        cla.setCollege(college);
 
         System.out.println(cla.getName());
 
@@ -107,15 +107,14 @@ public class manageCla {
     // 更新班级信息
     @ResponseBody
     @RequestMapping("/updateCla.do")
-    public boolean updateCla(@RequestParam String name,
-                           @RequestParam String year, @RequestParam String major,
-                           @RequestParam String college) {
+    public boolean updateCla(String name,String year,  String major, String college, int cid) {
 
         Clazz cla = new Clazz();
         cla.setCollege(college);
         cla.setMajor(major);
         cla.setName(name);
         cla.setYear(year);
+        cla.setCid(cid);
 
         if(claSer.update(cla)) {
             return true;
@@ -131,6 +130,22 @@ public class manageCla {
     public boolean deleteCla(@RequestParam int cid) {
 
         if(claSer.deleteCla(cid)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // 删除班级成员
+    @ResponseBody
+    @RequestMapping("/deleteClaMember")
+    public boolean deleteClaMember(int xid){
+        // 清空该成员的班级信息
+        Xy xy = new Xy();
+        xy.setXid(xid);
+        xy.setClazzByClassid(null);
+
+        if(xySer.updateXyEntity(xy)) {
             return true;
         } else {
             return false;

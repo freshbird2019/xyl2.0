@@ -97,7 +97,19 @@ public class activityEntityDao implements dao{
     }
 
     // 暂时没这功能
-    public boolean edit(Object id) {
+    public boolean edit(Object ac) {
+
+        // 开启数据库操作session
+        Session session = hibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        // 获取所有活动数据
+        // ActivityEntity curr = (ActivityEntity) ac;
+        session.update((ActivityEntity)ac);
+
+        // 关闭数据库操作
+        session.close();
+
         return true;
     }
 

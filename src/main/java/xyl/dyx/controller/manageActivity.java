@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+
 import xyl.cct.pojo.Xy;
 import xyl.dyx.POJO.ActivityEntity;
 import xyl.dyx.service.Exclusion;
@@ -121,6 +121,28 @@ public class manageActivity {
         if(acService.joinAc(aid, xid)) {
             return true;
         } else {
+            return false;
+        }
+    }
+
+    // 修改活动信息
+    @ResponseBody
+    @RequestMapping("/updateAc")
+    public boolean updateAc(int aid, String name, String time,
+                            String description, int num, String location) {
+        ActivityEntity ac = new ActivityEntity();
+        ac.setAid(aid);
+        ac.setNum(num);
+        ac.setTime(time);
+        ac.setLocation(location);
+        ac.setDescription(description);
+
+        System.out.println(num);
+
+        if(acService.editAcEntity(ac)) {
+            return true;
+        }
+        else {
             return false;
         }
     }

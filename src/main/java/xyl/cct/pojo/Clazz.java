@@ -1,14 +1,21 @@
 package xyl.cct.pojo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "class", schema = "xyl")
 public class Clazz {
+    @JsonProperty(value = "Cid")
     private int cid;
+    @JsonProperty(value = "Name")
     private String name;
+    @JsonProperty(value = "Year")
     private String year;
+    @JsonProperty(value = "Major")
     private String major;
+    @JsonProperty(value = "College")
     private String college;
 
     @Id

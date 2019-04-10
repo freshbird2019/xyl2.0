@@ -29,9 +29,9 @@ public class activityEntityService {
         return dao.delete(id);
     }
 
-    //暂时没有删除活动的功能，要是写错了，直接删除吧
-    public boolean editAcEntity(int id) {
-        return dao.edit(id);
+    // 编辑活动信息
+    public boolean editAcEntity(ActivityEntity ac) {
+        return dao.edit(ac);
     }
 
     // 参加活动
