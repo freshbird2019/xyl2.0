@@ -139,13 +139,14 @@ public class manageCla {
     // 删除班级成员
     @ResponseBody
     @RequestMapping("/deleteClaMember")
-    public boolean deleteClaMember(int xid){
+    public boolean deleteClaMember(int xid, String name){
         // 清空该成员的班级信息
         Xy xy = new Xy();
         xy.setXid(xid);
+        xy.setName(name);
         xy.setClazzByClassid(null);
 
-        if(xySer.updateXyEntity(xy)) {
+        if(xySer.xyOutCla(xy)) {
             return true;
         } else {
             return false;

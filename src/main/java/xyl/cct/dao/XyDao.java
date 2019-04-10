@@ -207,4 +207,33 @@ public class XyDao {
         }
         return ok;
     }
+
+    // 删除校友班级信息
+    public boolean XyOutCla(Xy xy) {
+        boolean ok=true;
+        //负责被持久化对象的CRUD操作
+        Session session=HibernateUtils.openSession();
+        Transaction transaction=null;
+        try{
+            //负责事务相关的操作
+            transaction=session.beginTransaction();
+
+            //更新
+            String hql = "update Xy xy set xy.classid=null where xy.xid="+xy.getXid();
+            transaction.commit();
+        }
+        catch (HibernateException ex){
+            ok=false;
+            ex.printStackTrace();
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }
+        finally {
+            if(session!=null&&session.isOpen()){
+                session.close();
+            }
+        }
+        return ok;
+    }
 }

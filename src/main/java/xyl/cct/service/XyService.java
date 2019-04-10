@@ -37,4 +37,9 @@ public class XyService {
 
         return dao.ifExist(xy);
     }
+
+    // 删除校友班级信息
+    public boolean xyOutCla(Xy xy) {
+        return dao.XyOutCla(xy);
+    }
 }
