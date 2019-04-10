@@ -158,6 +158,46 @@ public class XyDao {
     }
 
     /*
+    根据校友name来找校友信息
+     */
+    public static Xy getXybyName(String name){
+        Xy xy=new Xy();
+        Session session=HibernateUtils.openSession();
+        Transaction transaction=null;
+        try {
+            //负责事务相关的操作
+            transaction = session.beginTransaction();
+
+            String hql="from Xy as xy where xy.name =:name";
+            Query hqlquery=session.createQuery(hql);
+            hqlquery.setParameter("name",name);
+            List<Xy> list=hqlquery.list();
+
+            //判断数组list为空方法！！！
+            if (list.isEmpty()||list.size()==0) { //校友账号不存在
+
+                System.out.println("不存在"+name+"校友");
+            } else {
+                xy=list.get(0);
+            }
+            transaction.commit();
+        }
+        catch (HibernateException ex){
+            System.out.println("服务器故障");
+            ex.printStackTrace();
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }
+        finally {
+            if(session!=null&&session.isOpen()){
+                session.close();
+            }
+        }
+        return xy;
+    }
+
+    /*
      * 判断校友是否存在
      */
     public static int ifExist(Xy xy) {
@@ -176,10 +216,11 @@ public class XyDao {
             hqlquery.setParameter("name",name);
             List<Xy> list=hqlquery.list();
 
-            if (list==null) { //校友账号不存在
+            //判断数组list为空方法！！！
+            if (list.isEmpty()||list.size()==0) { //校友账号不存在
 
                 System.out.println("id not exists");
-                ok= -1;
+                ok=-1;
             } else {    //校友账号存在，进一步判断密码是否正确
 
                 if (list.get(0).getPw().equals(xy.getPw())){
@@ -188,13 +229,13 @@ public class XyDao {
                 } else {
                     System.out.println(list.get(0).getPw()+xy.getPw());
                     System.out.println("password incorrect");
-                    ok = -1;
+                    ok = 0;
                 }
             }
             transaction.commit();
         }
         catch (HibernateException ex){
-            ok=-1;
+            ok=-2;
             ex.printStackTrace();
             if(transaction!=null){
                 transaction.rollback();

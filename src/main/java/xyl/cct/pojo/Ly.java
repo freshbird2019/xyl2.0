@@ -1,5 +1,7 @@
 package xyl.cct.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -9,6 +11,7 @@ public class Ly {
     private Timestamp lydate;
     private String info;
     private int state;
+    @JsonIgnore
     private Xy xyByLyxid;
 
     @Id

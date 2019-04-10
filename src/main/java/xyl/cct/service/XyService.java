@@ -42,4 +42,7 @@ public class XyService {
     public boolean xyOutCla(Xy xy) {
         return dao.XyOutCla(xy);
     }
+
+    //根据name查找校友
+    public Xy getXyByName(String name){return dao.getXybyName(name);}
 }

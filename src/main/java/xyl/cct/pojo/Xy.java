@@ -14,6 +14,7 @@ public class Xy {
     private int state;
     private Collection<Ly> liesByXid;
     private Clazz clazzByClassid;
+    private String address;
 
     @Id
     @Column(name = "xid", nullable = false)
@@ -132,5 +133,15 @@ public class Xy {
 
     public void setClazzByClassid(Clazz clazzByClassid) {
         this.clazzByClassid = clazzByClassid;
+    }
+
+    @Basic
+    @Column(name = "address", nullable = true, length = 100)
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

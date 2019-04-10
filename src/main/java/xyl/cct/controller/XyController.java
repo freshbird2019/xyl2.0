@@ -3,10 +3,7 @@ package xyl.cct.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import xyl.cct.pojo.Xy;
 import xyl.cct.service.XyService;
@@ -19,21 +16,43 @@ public class XyController {
     private XyService xyService;
 
     /*
-    检查校友登录
+    vuetest校友登录
      */
-    @RequestMapping(value = "/checkXyLogin.do")
-    public ModelAndView checkLogin(Xy xy,Model model) {
-        ModelAndView mv = new ModelAndView();
+    @RequestMapping("/llogin")
+    @ResponseBody
+    public int llogin(
+            @RequestParam(value = "name",required = false)String name,
+            @RequestParam(value = "pw",required = false)String pw,
+            Model model){
+        Xy xy=new Xy();
+        xy.setName(name);
+        xy.setPw(pw);
+        System.out.println(name+"+"+pw);
         int nowid=xyService.ifCorrect(xy);
+        System.out.println(nowid);
         if(nowid>0) {//存在则进入主界面
-            mv.setViewName("xyHome");
             xy.setXid(nowid);
-            model.addAttribute("nowinxy",xy);
+            model.addAttribute(
+                    "nowinxy",xy);
         } else {
-            mv.addObject("msg", "登录失败！");
-            mv.setViewName("xylogin");
+            model.addAttribute("error","登录失败");
         }
-        return mv;
+        return nowid;
+    }
+
+    /*
+    校友注册
+     */
+    @ResponseBody
+    @RequestMapping(value = "/register.do")
+    public boolean Xyregister(@RequestBody Xy xy){
+        System.out.println("注册新校友"+xy.getName());
+        boolean ok;
+        xy.setState(0);
+        //注册成功转到登录界面
+        ok=xyService.addXy(xy);
+        System.out.println("注册新校友"+xy.getXid());
+        return ok;
     }
 
     /*
@@ -93,24 +112,5 @@ public class XyController {
         xyService.updateXyEntity(x);
         model.addAttribute("nowinxy",x);
         return "xyHome";
-    }
-
-
-    /*
-    校友注册
-     */
-    @RequestMapping(value = "/register.do",method = RequestMethod.POST)
-    public String Xyregister(Xy xy){
-        System.out.println("注册新校友"+xy.getName());
-        /*int index=xyService.getMaxId()+1;
-        xy.setXyId(index);*/
-        xy.setState(0);
-        //注册成功转到登录界面
-        if(xyService.addXy(xy)){
-            System.out.println("注册新校友"+xy.getXid());
-            return "index";
-        }
-        //重新注册
-        else return "xyregister";
     }
 }
