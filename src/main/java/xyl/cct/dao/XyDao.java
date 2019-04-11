@@ -43,6 +43,131 @@ public class XyDao {
     }
 
     /*
+    未入班校友
+     */
+    public static List<Xy> queryAll0(){
+        //负责被持久化对象的CRUD操作
+        Session session=HibernateUtils.openSession();
+        List<Xy> list= null;
+        Transaction transaction=null;
+        try{
+            transaction=session.beginTransaction();
+
+            //查询所有记录
+            String sql="from Xy as xy where xy.state=0 order by xid asc";
+            Query query=session.createQuery(sql);
+            list=query.list();
+            transaction.commit();
+        }
+        catch (HibernateException ex){
+            ex.printStackTrace();
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }
+        finally {
+            if(session!=null&&session.isOpen()){
+                session.close();
+            }
+        }
+        return list;
+    }
+
+    /*
+    有班校友
+     */
+    public static List<Xy> queryAll1(){
+        //负责被持久化对象的CRUD操作
+        Session session=HibernateUtils.openSession();
+        List<Xy> list= null;
+        Transaction transaction=null;
+        try{
+            transaction=session.beginTransaction();
+
+            //查询所有记录
+            String sql="from Xy as xy where xy.state=1 order by xid asc";
+            Query query=session.createQuery(sql);
+            list=query.list();
+            transaction.commit();
+        }
+        catch (HibernateException ex){
+            ex.printStackTrace();
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }
+        finally {
+            if(session!=null&&session.isOpen()){
+                session.close();
+            }
+        }
+        return list;
+    }
+
+    /*
+    申请状态校友
+     */
+    public static List<Xy> queryAll2(){
+        //负责被持久化对象的CRUD操作
+        Session session=HibernateUtils.openSession();
+        List<Xy> list= null;
+        Transaction transaction=null;
+        try{
+            transaction=session.beginTransaction();
+
+            //查询所有记录
+            String sql="from Xy as xy where xy.state=2 order by xid asc";
+            Query query=session.createQuery(sql);
+            list=query.list();
+            transaction.commit();
+        }
+        catch (HibernateException ex){
+            ex.printStackTrace();
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }
+        finally {
+            if(session!=null&&session.isOpen()){
+                session.close();
+            }
+        }
+        return list;
+    }
+
+    /*
+    查找相同班级的校友
+     */
+    public static List<Xy> queryByClassId(int id){
+        //负责被持久化对象的CRUD操作
+        Session session=HibernateUtils.openSession();
+        List<Xy> list= null;
+        Transaction transaction=null;
+        try{
+            transaction=session.beginTransaction();
+
+            //查询所有记录
+            String sql="from Xy as xy where xy.clazzByClassid.cid=:cid";
+            Query query=session.createQuery(sql);
+            query.setParameter("cid",id);
+            list=query.list();
+            transaction.commit();
+        }
+        catch (HibernateException ex){
+            ex.printStackTrace();
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }
+        finally {
+            if(session!=null&&session.isOpen()){
+                session.close();
+            }
+        }
+        return list;
+    }
+
+    /*
     校友注册
     增加一条校友信息
      */

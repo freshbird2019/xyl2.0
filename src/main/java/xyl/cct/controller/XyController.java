@@ -9,6 +9,7 @@ import xyl.cct.pojo.Xy;
 import xyl.cct.service.XyService;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 public class XyController {
@@ -56,26 +57,48 @@ public class XyController {
     }
 
     /*
-   获取所有校友信息
+   获取加入过班级的校友信息0
     */
-    @RequestMapping(value = "/getAllXy", method = RequestMethod.GET)
-    public ModelAndView getAllXy() {
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("xys",xyService.getAllXy());
-        mv.setViewName("xydisplay");
-        return mv;
+    @ResponseBody
+    @RequestMapping(value = "/getAllXy0", method = RequestMethod.GET)
+    public List<Xy> getAllXy0() {
+        System.out.print("获取加入过班级的校友信息");
+        List<Xy> list=xyService.getAllXy0();
+        return list;
+    }
+
+    /*
+   获取未加入班级的校友信息1
+    */
+    @ResponseBody
+    @RequestMapping(value = "/getAllXy1", method = RequestMethod.GET)
+    public List<Xy> getAllXy1() {
+        System.out.print("获取未加入班级的校友信息");
+        List<Xy> list=xyService.getAllXy1();
+        return list;
+    }
+
+    /*
+  获取申请状态的校友信息2
+   */
+    @ResponseBody
+    @RequestMapping(value = "/getAllXy2", method = RequestMethod.GET)
+    public List<Xy> getAllXy2() {
+        System.out.print("获取申请状态的校友信息");
+        List<Xy> list=xyService.getAllXy2();
+        return list;
     }
 
     /*
     获取与当前校友同班的校友信息
      */
-   /* @RequestMapping(value = "/getXyByClassId" ,method=RequestMethod.GET)
-    public ModelAndView getXyByClassId(){
-        ModelAndView mv=new ModelAndView();
-        mv.addObject("xys",xyService)
-        mv.setViewName("xxydisplay");
-        return mv;
-    }*/
+    @ResponseBody
+   @RequestMapping(value = "/getXyByClassId" ,method=RequestMethod.GET)
+    public List<Xy> getXyByClassId(@RequestParam(value = "classid",required = false)int id){
+        System.out.print("获取班级号为"+id+"的校友信息");
+        List<Xy> list=xyService.getXyByClassId(id);
+        return list;
+    }
 
     /*
     修改校友信息,

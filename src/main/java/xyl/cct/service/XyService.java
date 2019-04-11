@@ -16,6 +16,22 @@ public class XyService {
         return dao.queryAll();
     }
 
+    public List<Xy> getAllXy0(){
+        return dao.queryAll0();
+    }
+
+    public List<Xy> getAllXy1(){
+        return dao.queryAll1();
+    }
+
+    public List<Xy> getAllXy2(){
+        return dao.queryAll2();
+    }
+
+    public List<Xy> getXyByClassId(int id){
+        return dao.queryByClassId(id);
+    }
+
     public boolean addXy(Xy xy){
         return dao.addXy(xy);
     }
