@@ -18,7 +18,6 @@ public class Clazz {
     private String major;
     @JsonProperty(value = "College")
     private String college;
-    private Collection<Xy> xiesByCid;
 
     @Id
     @Column(name = "cid", nullable = false)
@@ -96,12 +95,4 @@ public class Clazz {
         return result;
     }
 
-    @OneToMany(mappedBy = "clazzByClassid")
-    public Collection<Xy> getXiesByCid() {
-        return xiesByCid;
-    }
-
-    public void setXiesByCid(Collection<Xy> xiesByCid) {
-        this.xiesByCid = xiesByCid;
-    }
 }

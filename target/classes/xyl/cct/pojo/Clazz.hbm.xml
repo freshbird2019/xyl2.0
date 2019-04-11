@@ -20,11 +20,6 @@
         <property name="college">
             <column name="college" sql-type="varchar(20)" length="20"/>
         </property>
-        <set name="xiesByCid" inverse="true" lazy="false" fetch="join" >
-            <key>
-                <column name="classid" not-null="false"/>
-            </key>
-            <one-to-many not-found="ignore" class="xyl.cct.pojo.Xy"/>
-        </set>
+
     </class>
 </hibernate-mapping>
