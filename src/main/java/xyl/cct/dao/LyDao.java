@@ -8,14 +8,15 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import xyl.cct.pojo.Ly;
+import xyl.cct.pojo.Xy;
 import java.util.List;
 
 @Repository("lyDao")
 public class LyDao {
     /*
-    查找所有留言
+    查找所有审核过的留言
      */
-    public static List<Ly> queryAll(){
+    public static List<Ly> query1(){
         //负责被持久化对象的CRUD操作
         Session session=HibernateUtils.openSession();
         List<Ly> list= null;
@@ -25,8 +26,72 @@ public class LyDao {
             transaction=session.beginTransaction();
 
             //查询所有记录
-            String sql="from Ly order by lid asc";
+            String sql="from Ly as ly where ly.state=1";
             Query query=session.createQuery(sql);
+            list=query.list();
+            transaction.commit();
+        }
+        catch (HibernateException ex){
+            ex.printStackTrace();
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }
+        finally {
+            if(session!=null&&session.isOpen()){
+                session.close();
+            }
+        }
+        return list;
+    }
+    /*
+    查找状态为0的留言（未审核）
+     */
+    public static List<Ly> query0(){
+        //负责被持久化对象的CRUD操作
+        Session session=HibernateUtils.openSession();
+        List<Ly> list= null;
+        Transaction transaction=null;
+        try{
+            //负责事务相关的操作
+            transaction=session.beginTransaction();
+
+            //查询所有记录
+            String sql="from Ly as ly where ly.state=0";
+            Query query=session.createQuery(sql);
+            list=query.list();
+            transaction.commit();
+        }
+        catch (HibernateException ex){
+            ex.printStackTrace();
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }
+        finally {
+            if(session!=null&&session.isOpen()){
+                session.close();
+            }
+        }
+        return list;
+    }
+    /*
+    给定校友，查看他的所有留言
+     */
+    public static List<Ly> querySelfLy(Xy xy){
+        //负责被持久化对象的CRUD操作
+        Session session=HibernateUtils.openSession();
+        List<Ly> list= null;
+        Transaction transaction=null;
+        try{
+            //负责事务相关的操作
+            transaction=session.beginTransaction();
+
+            //查询所有记录
+            int id=xy.getXid();
+            String sql="from Ly as ly where ly.xyByLyxid.xid=:id";
+            Query query=session.createQuery(sql);
+            query.setParameter("id",id);
             list=query.list();
             transaction.commit();
         }
