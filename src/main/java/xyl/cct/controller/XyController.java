@@ -95,6 +95,17 @@ public class XyController {
     }
 
     /*
+    根据xyname返回校友信息
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getXyByname")
+    public Xy getXyByName(@RequestParam(value = "xyname",required = false)String name){
+        System.out.print("获取校友信息"+name);
+        Xy xy=xyService.getXyByName(name);
+        return xy;
+    }
+
+    /*
     获取与当前校友同班的校友信息
      */
     @ResponseBody
@@ -122,6 +133,19 @@ public class XyController {
         ok=xyService.updateXyEntity(xy);
         System.out.print(xy.getClazzByClassid().getName());
         return ok;
+    }
+
+    /*
+    获取校友所在的班级名称
+     */
+    @ResponseBody
+    @RequestMapping(value = "getClanameByXid")
+    public String getClanameByXid(
+            @RequestParam(value = "xyid",required = false)int xid){
+        Xy xy=xyService.getXyById(xid);
+        String classname="";
+        classname=xy.getClazzByClassid().getName();//????获取是空的！我日！
+        return classname;
     }
     /*
     修改校友信息,

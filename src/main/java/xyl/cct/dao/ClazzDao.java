@@ -180,7 +180,7 @@ public class ClazzDao implements dao {
             Clazz cla = new Clazz();
             cla.setCid(id);
             // 获取所有活动数据
-            String hql = "from Xy as xy where xy.clazzByClassid="+id;
+            String hql = "from Xy as xy where xy.clazzByClassid.cid="+id;
 
             Query query =session.createQuery(hql);
             xyList = query.list();
@@ -209,7 +209,7 @@ public class ClazzDao implements dao {
 
 
     /*
-    根据id获取班级
+    根据班级id获取班级
      */
     public Clazz getClassById(int id) {
 
@@ -246,6 +246,5 @@ public class ClazzDao implements dao {
         return clazz;
 
     }
-
 
 }
