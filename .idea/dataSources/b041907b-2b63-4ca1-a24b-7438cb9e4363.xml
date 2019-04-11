@@ -1279,8 +1279,7 @@ xid</ColNames>
     </column>
     <column id="313" parent="281" name="info">
       <Position>4</Position>
-      <DataType>varchar(100)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(5000)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="314" parent="281" name="state">

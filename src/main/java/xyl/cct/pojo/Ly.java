@@ -12,7 +12,7 @@ public class Ly {
     private String info;
     private int state;
     private int best;
-    @JsonIgnore
+
     private Xy xyByLyxid;
 
     @Id
