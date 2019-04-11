@@ -74,7 +74,7 @@ public class XyDao {
     }
 
     /*
-    有班校友
+    申请状态校友
      */
     public static List<Xy> queryAll1(){
         //负责被持久化对象的CRUD操作
@@ -105,8 +105,8 @@ public class XyDao {
     }
 
     /*
-    申请状态校友
-     */
+   有班校友
+    */
     public static List<Xy> queryAll2(){
         //负责被持久化对象的CRUD操作
         Session session=HibernateUtils.openSession();
@@ -134,6 +134,7 @@ public class XyDao {
         }
         return list;
     }
+
 
     /*
     查找相同班级的校友
@@ -266,6 +267,7 @@ public class XyDao {
 
             //更新
             session.update(xy);
+            System.out.print("有在更新");
             transaction.commit();
         }
         catch (HibernateException ex){

@@ -208,5 +208,44 @@ public class ClazzDao implements dao {
     }
 
 
+    /*
+    根据id获取班级
+     */
+    public Clazz getClassById(int id) {
+
+        boolean flag = true;
+        Transaction trans = null;
+        Session session = null;
+        Clazz clazz=new Clazz();
+
+        try {
+            // 开启数据库操作session
+            session = hibernateUtil.getSessionFactory().openSession();
+            trans = session.beginTransaction();
+
+            clazz=session.get(Clazz.class,id);
+
+            //Hibernate.initialize(xyList);
+
+            // commit
+            trans.commit();
+
+
+        }catch (Exception e) {
+            flag = false;
+            e.printStackTrace();
+
+            // rollback
+            if(trans != null) {
+                trans.rollback();
+            }
+        }finally {
+            session.close();
+        }
+
+        return clazz;
+
+    }
+
 
 }

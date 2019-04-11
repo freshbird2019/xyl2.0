@@ -22,6 +22,7 @@ public class ClazzService {
         return dao.getAllmember(id);
     }
 
+
     // 新建班级
     public boolean addCla(Clazz cla) {
         return dao.add(cla);
@@ -68,4 +69,7 @@ public class ClazzService {
     public  boolean deleteCla(int id) {
         return dao.delete(id);
     }
+
+    //根据id获取班级
+    public Clazz getClassById(int id){return dao.getClassById(id);}
 }

@@ -3,16 +3,14 @@ package xyl.cct.controller;
 import javafx.scene.chart.ValueAxis;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import xyl.cct.pojo.Xy;
 import xyl.cct.service.ClazzService;
 import xyl.cct.service.XyService;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 public class ClazzController {
@@ -20,6 +18,18 @@ public class ClazzController {
     private ClazzService clazzService;
     @Resource(name = "xyService")
     private XyService xyService;
+
+    /*
+    获取班级人数
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getClassNumById",method = RequestMethod.GET)
+    public int getClassNumById(
+            @RequestParam(value = "classid",required =false) int id){
+        List<Xy> list=clazzService.getAllXy(id);
+        int num=list.size();
+        return num;
+    }
 
     /*
     申请班级时，获取所有班级信息
