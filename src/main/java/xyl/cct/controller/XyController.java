@@ -147,40 +147,16 @@ public class XyController {
         classname=xy.getClazzByClassid().getName();//????获取是空的！我日！
         return classname;
     }
-    /*
-    修改校友信息,
-    将要修改的校友信息传过来
-    跳转到updatexy界面修改
-     */
-    @RequestMapping(value = "/updateXy.do")
-        public String updateXy(int id, Model model){
-            System.out.println(id);
-            Xy x=xyService.getXyById(id);
-        // System.out.println(x.getId());
-        model.addAttribute("xy",x);
-        return "updatexy";
-    }
 
     /*
     修改校友信息，
-    成功后回到主界面
      */
-    @RequestMapping("/update.do")
-    public String update(Xy x){
-        System.out.println("修改校友信息"+x.getName());
-        xyService.updateXyEntity(x);
-        return "redirect:/getAllXy";
-    }
-
-    /*
-    修改校友信息，
-    成功后回到主界面
-     */
+    @ResponseBody
     @RequestMapping("/updateNowin.do")
-    public String updateNowin(Xy x,Model model){
-        System.out.println("修改校友信息"+x.getName());
-        xyService.updateXyEntity(x);
-        model.addAttribute("nowinxy",x);
-        return "xyHome";
+    public Boolean updateNowin(@RequestBody Xy xy){
+        boolean ok=false;
+        System.out.println("修改校友信息"+xy.getXid()+xy.getName());
+        ok=xyService.updateXyEntity(xy);
+        return ok;
     }
 }
