@@ -68,7 +68,7 @@ public class XyController {
     }
 
     /*
-   获取未加入班级的校友信息1
+        获取未加入班级的校友信息1
     */
     @ResponseBody
     @RequestMapping(value = "/getAllXy1", method = RequestMethod.GET)
@@ -79,7 +79,7 @@ public class XyController {
     }
 
     /*
-  获取申请状态的校友信息2
+        获取申请状态的校友信息2
    */
     @ResponseBody
     @RequestMapping(value = "/getAllXy2", method = RequestMethod.GET)
@@ -138,11 +138,17 @@ public class XyController {
     }
 
     /*
-    * 将该学生踢出班级
+    * 针对校友申请的一系列操作
+    * state为目标状态
      */
     @ResponseBody
-    @RequestMapping("/deleteXy.do")
-    public boolean deleteXy(int id) {
-
+    @RequestMapping("/apply.do")
+    public boolean deleteClaMember(int xid, int state) {
+        if(xyService.xyOutCla(xid, state)) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
 }

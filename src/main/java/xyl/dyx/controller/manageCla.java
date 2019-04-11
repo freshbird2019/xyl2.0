@@ -45,7 +45,7 @@ public class manageCla {
     // 添加班级
     @ResponseBody
     @RequestMapping("/addClass")
-    public boolean allClass(String name,String year,  String major, String college) {
+    public boolean allClass(String name, String year, String major, String college) {
 
         Clazz cla = new Clazz();
 
@@ -57,7 +57,7 @@ public class manageCla {
 
         System.out.println(cla.getName());
 
-        if(claSer.addCla(cla)) {
+        if (claSer.addCla(cla)) {
 
             return true;
 
@@ -82,7 +82,7 @@ public class manageCla {
         gl.add("liesByXid");
 
         //创建临时实例,并编写过滤规则
-        Gson gson = new GsonBuilder().addSerializationExclusionStrategy(new Exclusion(gl) ).create();
+        Gson gson = new GsonBuilder().addSerializationExclusionStrategy(new Exclusion(gl)).create();
         String json = gson.toJson(xy);
 
         return json;
@@ -97,7 +97,7 @@ public class manageCla {
 
         xy.setState(1);
 
-        if(xySer.updateXyEntity(xy)) {
+        if (xySer.updateXyEntity(xy)) {
             return true;
         } else {
             return false;
@@ -107,7 +107,7 @@ public class manageCla {
     // 更新班级信息
     @ResponseBody
     @RequestMapping("/updateCla.do")
-    public boolean updateCla(String name,String year,  String major, String college, int cid) {
+    public boolean updateCla(String name, String year, String major, String college, int cid) {
 
         Clazz cla = new Clazz();
         cla.setCollege(college);
@@ -116,7 +116,7 @@ public class manageCla {
         cla.setYear(year);
         cla.setCid(cid);
 
-        if(claSer.update(cla)) {
+        if (claSer.update(cla)) {
             return true;
         } else {
             return false;
@@ -129,28 +129,11 @@ public class manageCla {
     @RequestMapping("/deleteCla.do")
     public boolean deleteCla(@RequestParam int cid) {
 
-        if(claSer.deleteCla(cid)){
+        if (claSer.deleteCla(cid)) {
             return true;
         } else {
             return false;
         }
     }
-
-    // 删除班级成员
-    @ResponseBody
-    @RequestMapping("/deleteClaMember")
-    public boolean deleteClaMember(int xid, String name){
-        // 清空该成员的班级信息
-        Xy xy = new Xy();
-        xy.setXid(xid);
-        xy.setName(name);
-        xy.setClazzByClassid(null);
-
-        if(xySer.xyOutCla(xy)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 }
+

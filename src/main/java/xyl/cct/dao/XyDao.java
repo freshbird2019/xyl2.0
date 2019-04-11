@@ -377,8 +377,8 @@ public class XyDao {
         return ok;
     }
 
-    // 删除校友班级信息
-    public boolean XyOutCla(Xy xy) {
+    // 改变状态
+    public boolean XyOutCla(int xid, int state) {
         boolean ok=true;
         //负责被持久化对象的CRUD操作
         Session session=HibernateUtils.openSession();
@@ -388,7 +388,10 @@ public class XyDao {
             transaction=session.beginTransaction();
 
             //更新
-            String hql = "update Xy xy set xy.classid=null where xy.xid="+xy.getXid();
+            Xy cur = session.get(Xy.class, xid);
+            cur.setState(state);
+            session.update(cur);
+
             transaction.commit();
         }
         catch (HibernateException ex){
@@ -405,6 +408,7 @@ public class XyDao {
         }
         return ok;
     }
+
 
 
 }

@@ -55,8 +55,8 @@ public class XyService {
     }
 
     // 删除校友班级信息
-    public boolean xyOutCla(Xy xy) {
-        return dao.XyOutCla(xy);
+    public boolean xyOutCla(int xy, int state) {
+        return dao.XyOutCla(xy, state);
     }
 
     //根据name查找校友
