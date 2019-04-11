@@ -122,4 +122,17 @@ public class LyController {
         return ok;
     }
 
+    /*
+    * 设置精选留言
+     */
+    @ResponseBody
+    @RequestMapping(value = "/asBest.do")
+    public boolean asBest(int lid) {
+        if(lyService.setAsBest(lid)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

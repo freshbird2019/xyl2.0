@@ -17,6 +17,9 @@
         <property name="state">
             <column name="state" sql-type="int(11)"/>
         </property>
+        <property name="best">
+            <column name="best" sql-type="int(11)"/>
+        </property>
         <many-to-one name="xyByLyxid" class="xyl.cct.pojo.Xy">
             <column name="lyxid"/>
         </many-to-one>

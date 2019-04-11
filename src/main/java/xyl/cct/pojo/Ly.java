@@ -11,6 +11,7 @@ public class Ly {
     private Timestamp lydate;
     private String info;
     private int state;
+    private int best;
     @JsonIgnore
     private Xy xyByLyxid;
 
@@ -54,6 +55,16 @@ public class Ly {
         this.state = state;
     }
 
+    @Basic
+    @Column(name = "best")
+    public int getBest() {
+        return best;
+    }
+
+    public void setBest(int best) {
+        this.best = best;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,6 +86,7 @@ public class Ly {
         result = 31 * result + (lydate != null ? lydate.hashCode() : 0);
         result = 31 * result + (info != null ? info.hashCode() : 0);
         result = 31 * result + state;
+
         return result;
     }
 
@@ -87,4 +99,5 @@ public class Ly {
     public void setXyByLyxid(Xy xyByLyxid) {
         this.xyByLyxid = xyByLyxid;
     }
+
 }

@@ -6,6 +6,7 @@ import xyl.cct.pojo.Xy;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.persistence.Id;
 import java.util.List;
 
 @Service("lyService")
@@ -33,5 +34,7 @@ public class LyService {
     }
 
     public boolean updateState(int id) { return dao.updateLy(id); }
+
+    public boolean setAsBest(int id){ return dao.asBest(id);}
 
 }

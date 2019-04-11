@@ -206,13 +206,37 @@ public class LyDao {
 
     }
 
-    /* 测试功能
-    public static void main(String[] args) {
-        List<Ly> list = queryAll();
-
-        for(Ly item : list) {
-            System.out.println(item.getLid());
-        }
-    }
+   /*
+   * 留言加精选
     */
+   public boolean asBest(Integer lid) {
+       Session session = HibernateUtils.openSession();
+       Transaction transaction = null;
+
+       boolean ok = true;
+       try {
+           transaction = session.beginTransaction();
+
+           //根据id找到记录
+           Ly ly = session.get(Ly.class, lid);
+           ly.setBest(1);
+           session.save(ly);
+
+           //提交事务
+           transaction.commit();
+       } catch (Exception e) {
+           ok = false;
+           e.printStackTrace();
+           //回滚事务
+           if (transaction != null) {//事务不为空，说明事务提交不成功
+               transaction.rollback();
+               ;
+           }
+       } finally {
+           if (session != null && session.isOpen()) {
+               session.close();
+           }
+       }
+       return ok;
+   }
 }
