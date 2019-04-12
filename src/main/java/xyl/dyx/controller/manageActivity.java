@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import xyl.cct.pojo.Xy;
+import xyl.cct.service.XyService;
 import xyl.dyx.POJO.ActivityEntity;
 import xyl.dyx.service.Exclusion;
 import xyl.dyx.service.activityEntityService;
@@ -18,6 +19,8 @@ import java.util.List;
 public class manageActivity {
     @Resource(name = "activityEntityService")
     private activityEntityService acService;
+    @Resource(name="xyService")
+    private XyService xyService;
 
     /*
      * 获取所有活动信息
@@ -98,8 +101,9 @@ public class manageActivity {
      */
     @ResponseBody
     @RequestMapping("/getXyAc")
-    public String getXyActivity(@RequestParam int num) {
+    public String getXyActivity(@RequestParam(value = "name",required = false)String xyname) {
 
+        int num=xyService.getXyByName(xyname).getXid();
         Gson gson = new Gson();
 
         List<ActivityEntity> ac = acService.getXyAcSer(num);
@@ -116,8 +120,10 @@ public class manageActivity {
      */
     @ResponseBody
     @RequestMapping("/joinAc")
-    public boolean joinAc(@RequestParam int aid, @RequestParam int xid) {
+    public boolean joinAc(@RequestParam(value = "aid",required = false) int aid,
+                          @RequestParam(value = "xyname",required = false) String xyname) {
 
+        int xid=xyService.getXyByName(xyname).getXid();
         if(acService.joinAc(aid, xid)) {
             return true;
         } else {
