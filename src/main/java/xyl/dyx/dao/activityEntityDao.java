@@ -291,6 +291,37 @@ public class activityEntityDao implements dao{
         } else {
             return  ac;
         }
+    }
 
+    // 退出活动
+    public boolean exitAc(int aid, int xid) {
+        Transaction trans = null;
+        Session session = null;
+        List<ActivityEntity> ac = new ArrayList<>();
+        boolean flag = true;
+
+        try {
+            // 开启数据库操作session
+            session = hibernateUtil.getSessionFactory().openSession();
+            trans = session.beginTransaction();
+
+            String hql = "delete from JoinAcEntity ja where ja.aid="+aid+" and ja.xid ="+xid;
+            Query query =session.createQuery(hql);
+
+            trans.commit();
+
+        }catch (Exception e) {
+
+            e.printStackTrace();
+            flag=false;
+
+            // rollback
+            if(trans != null) {
+                trans.rollback();
+            }
+        }finally {
+            session.close();
+        }
+        return flag;
     }
 }

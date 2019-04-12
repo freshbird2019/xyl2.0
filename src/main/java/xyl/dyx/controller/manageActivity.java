@@ -154,5 +154,16 @@ public class manageActivity {
         }
     }
 
+    // 退出活动
+    @ResponseBody
+    @RequestMapping("/exitAc")
+    public boolean exitAc(int aid, int xid) {
+        if(acService.exitAc(aid, xid)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 }

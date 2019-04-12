@@ -48,4 +48,9 @@ public class activityEntityService {
     public List<ActivityEntity> getXyAcSer(int xid) {
         return dao.getXyAc(xid);
     }
+
+    // 退出活动
+    public boolean exitAc(int aid, int xid) {
+        return dao.exitAc(aid, xid);
+    }
 }
