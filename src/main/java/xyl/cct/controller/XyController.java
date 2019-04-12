@@ -139,13 +139,13 @@ public class XyController {
     获取校友所在的班级名称
      */
     @ResponseBody
-    @RequestMapping(value = "getClanameByXid")
-    public String getClanameByXid(
-            @RequestParam(value = "xyid",required = false)int xid){
-        Xy xy=xyService.getXyById(xid);
-        String classname="";
-        classname=xy.getClazzByClassid().getName();//????获取是空的！我日！
-        return classname;
+    @RequestMapping(value = "getClaidByXyname")
+    public int getClaidByXid(
+            @RequestParam(value = "xyname",required = false)String name){
+        Xy xy=xyService.getXyByName(name);
+        int claid;
+        claid=xy.getClazzByClassid().getCid();//????获取是空的！我日！
+        return claid;
     }
 
     /*
