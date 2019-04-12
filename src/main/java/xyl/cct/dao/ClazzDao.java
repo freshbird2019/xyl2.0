@@ -207,6 +207,49 @@ public class ClazzDao implements dao {
 
     }
 
+    /*
+     * 获取某一班级所有班级成员
+     * 参数是班级id，已经审核过了的哟
+     */
+    public List<Xy> getAllmember2(int id) {
+
+        boolean flag = true;
+        Transaction trans = null;
+        Session session = null;
+        List<Xy> xyList = new ArrayList<>();
+
+        try {
+            // 开启数据库操作session
+            session = hibernateUtil.getSessionFactory().openSession();
+            trans = session.beginTransaction();
+            // 获取所有活动数据
+            String hql = "from Xy as xy where xy.clazzByClassid.cid = :id and xy.state =2";
+
+            Query query =session.createQuery(hql);
+            query.setParameter("id",id);
+            xyList = query.list();
+
+            //Hibernate.initialize(xyList);
+
+            // commit
+            trans.commit();
+
+
+        }catch (Exception e) {
+            flag = false;
+            e.printStackTrace();
+
+            // rollback
+            if(trans != null) {
+                trans.rollback();
+            }
+        }finally {
+            session.close();
+        }
+
+        return xyList;
+
+    }
 
     /*
     根据班级id获取班级
