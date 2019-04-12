@@ -142,6 +142,7 @@ public class manageActivity {
         ac.setTime(time);
         ac.setLocation(location);
         ac.setDescription(description);
+        ac.setName(name);
 
         System.out.println(num);
 
