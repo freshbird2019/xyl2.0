@@ -5,9 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import xyl.cct.pojo.Clazz;
 import xyl.cct.pojo.Xy;
-import xyl.cct.service.ClazzService;
 import xyl.cct.service.XyService;
 
 import javax.annotation.Resource;
@@ -17,8 +15,6 @@ import java.util.List;
 public class XyController {
     @Resource(name = "xyService")
     private XyService xyService;
-    @Resource(name="ClazzService")
-    private ClazzService clazzService;
 
     /*
     vuetest校友登录
@@ -61,35 +57,34 @@ public class XyController {
     }
 
     /*
-   获取未加入班级的校友信息0
+   获取加入过班级的校友信息0
     */
     @ResponseBody
     @RequestMapping(value = "/getAllXy0", method = RequestMethod.GET)
     public List<Xy> getAllXy0() {
-        System.out.print("获取未加入班级的校友信息");
+        System.out.print("获取加入过班级的校友信息");
         List<Xy> list=xyService.getAllXy0();
         return list;
     }
 
     /*
-  获取申请状态的校友信息1
-   */
+        获取未加入班级的校友信息1
+    */
     @ResponseBody
     @RequestMapping(value = "/getAllXy1", method = RequestMethod.GET)
     public List<Xy> getAllXy1() {
-        System.out.print("获取申请状态的校友信息");
+        System.out.print("获取未加入班级的校友信息");
         List<Xy> list=xyService.getAllXy1();
         return list;
     }
 
-
     /*
-   获取加入过班级的校友信息2
-    */
+        获取申请状态的校友信息2
+   */
     @ResponseBody
     @RequestMapping(value = "/getAllXy2", method = RequestMethod.GET)
     public List<Xy> getAllXy2() {
-        System.out.print("获取加入过班级的校友信息");
+        System.out.print("获取申请状态的校友信息");
         List<Xy> list=xyService.getAllXy2();
         return list;
     }
@@ -98,31 +93,13 @@ public class XyController {
     获取与当前校友同班的校友信息
      */
     @ResponseBody
-    @RequestMapping(value = "/getXyByClassId" ,method=RequestMethod.GET)
+   @RequestMapping(value = "/getXyByClassId" ,method=RequestMethod.GET)
     public List<Xy> getXyByClassId(@RequestParam(value = "classid",required = false)int id){
         System.out.print("获取班级号为"+id+"的校友信息");
         List<Xy> list=xyService.getXyByClassId(id);
         return list;
     }
 
-    /*
-    校友申请某班级
-     */
-    @ResponseBody
-    @RequestMapping(value = "/applyClass")
-    public boolean applyClass(
-            @RequestParam(value = "classid",required = false)int id,
-            @RequestParam(value = "xyname",required = false)String name){
-        boolean ok=false;
-        System.out.print(name+"申请加入班级"+id);
-        Xy xy=xyService.getXyByName(name);
-        xy.setState(1);
-        Clazz clazz=clazzService.getClassById(id);
-        xy.setClazzByClassid(clazz);
-        ok=xyService.updateXyEntity(xy);
-        System.out.print(xy.getClazzByClassid().getName());
-        return ok;
-    }
     /*
     修改校友信息,
     将要修改的校友信息传过来
@@ -158,5 +135,18 @@ public class XyController {
         xyService.updateXyEntity(x);
         model.addAttribute("nowinxy",x);
         return "xyHome";
+    }
+
+    /*
+    * 将该学生踢出班级
+     */
+    @ResponseBody
+    @RequestMapping("/apply.do")
+    public boolean deleteClaMember(int xid, int state) {
+        if(xyService.xyOutCla(xid, state)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
