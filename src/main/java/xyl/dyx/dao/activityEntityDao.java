@@ -105,7 +105,7 @@ public class activityEntityDao implements dao{
 
         // 获取所有活动数据
         // ActivityEntity curr = (ActivityEntity) ac;
-        session.update((ActivityEntity)ac);
+        session.update(ac);
 
         // 关闭数据库操作
         session.close();
