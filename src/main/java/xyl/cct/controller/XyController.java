@@ -5,7 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import xyl.cct.pojo.Clazz;
 import xyl.cct.pojo.Xy;
+import xyl.cct.service.ClazzService;
 import xyl.cct.service.XyService;
 
 import javax.annotation.Resource;
@@ -15,6 +17,8 @@ import java.util.List;
 public class XyController {
     @Resource(name = "xyService")
     private XyService xyService;
+    @Resource(name="ClazzService")
+    private ClazzService clazzService;
 
     /*
     vuetest校友登录
@@ -57,43 +61,55 @@ public class XyController {
     }
 
     /*
-   获取加入过班级的校友信息0
+   获取未加入班级的校友信息0
     */
     @ResponseBody
     @RequestMapping(value = "/getAllXy0", method = RequestMethod.GET)
     public List<Xy> getAllXy0() {
-        System.out.print("获取加入过班级的校友信息");
+        System.out.print("获取未加入班级的校友信息");
         List<Xy> list=xyService.getAllXy0();
         return list;
     }
 
     /*
-        获取未加入班级的校友信息1
-    */
+  获取申请状态的校友信息1
+   */
     @ResponseBody
     @RequestMapping(value = "/getAllXy1", method = RequestMethod.GET)
     public List<Xy> getAllXy1() {
-        System.out.print("获取未加入班级的校友信息");
+        System.out.print("获取申请状态的校友信息");
         List<Xy> list=xyService.getAllXy1();
         return list;
     }
 
+
     /*
-        获取申请状态的校友信息2
-   */
+   获取加入过班级的校友信息2
+    */
     @ResponseBody
     @RequestMapping(value = "/getAllXy2", method = RequestMethod.GET)
     public List<Xy> getAllXy2() {
-        System.out.print("获取申请状态的校友信息");
+        System.out.print("获取加入过班级的校友信息");
         List<Xy> list=xyService.getAllXy2();
         return list;
+    }
+
+    /*
+    根据xyname返回校友信息
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getXyByname")
+    public Xy getXyByName(@RequestParam(value = "xyname",required = false)String name){
+        System.out.print("获取校友信息"+name);
+        Xy xy=xyService.getXyByName(name);
+        return xy;
     }
 
     /*
     获取与当前校友同班的校友信息
      */
     @ResponseBody
-   @RequestMapping(value = "/getXyByClassId" ,method=RequestMethod.GET)
+    @RequestMapping(value = "/getXyByClassId" ,method=RequestMethod.GET)
     public List<Xy> getXyByClassId(@RequestParam(value = "classid",required = false)int id){
         System.out.print("获取班级号为"+id+"的校友信息");
         List<Xy> list=xyService.getXyByClassId(id);
@@ -101,44 +117,51 @@ public class XyController {
     }
 
     /*
-    修改校友信息,
-    将要修改的校友信息传过来
-    跳转到updatexy界面修改
+    校友申请某班级
      */
-    @RequestMapping(value = "/updateXy.do")
-        public String updateXy(int id, Model model){
-            System.out.println(id);
-            Xy x=xyService.getXyById(id);
-        // System.out.println(x.getId());
-        model.addAttribute("xy",x);
-        return "updatexy";
+    @ResponseBody
+    @RequestMapping(value = "/applyClass")
+    public boolean applyClass(
+            @RequestParam(value = "classid",required = false)int id,
+            @RequestParam(value = "xyname",required = false)String name){
+        boolean ok=false;
+        System.out.print(name+"申请加入班级"+id);
+        Xy xy=xyService.getXyByName(name);
+        xy.setState(1);
+        Clazz clazz=clazzService.getClassById(id);
+        xy.setClazzByClassid(clazz);
+        ok=xyService.updateXyEntity(xy);
+        System.out.print(xy.getClazzByClassid().getName());
+        return ok;
+    }
+
+    /*
+    获取校友所在的班级名称
+     */
+    @ResponseBody
+    @RequestMapping(value = "getClanameByXid")
+    public String getClanameByXid(
+            @RequestParam(value = "xyid",required = false)int xid){
+        Xy xy=xyService.getXyById(xid);
+        String classname="";
+        classname=xy.getClazzByClassid().getName();//????获取是空的！我日！
+        return classname;
     }
 
     /*
     修改校友信息，
-    成功后回到主界面
      */
-    @RequestMapping("/update.do")
-    public String update(Xy x){
-        System.out.println("修改校友信息"+x.getName());
-        xyService.updateXyEntity(x);
-        return "redirect:/getAllXy";
-    }
-
-    /*
-    修改校友信息，
-    成功后回到主界面
-     */
+    @ResponseBody
     @RequestMapping("/updateNowin.do")
-    public String updateNowin(Xy x,Model model){
-        System.out.println("修改校友信息"+x.getName());
-        xyService.updateXyEntity(x);
-        model.addAttribute("nowinxy",x);
-        return "xyHome";
+    public Boolean updateNowin(@RequestBody Xy xy){
+        boolean ok=false;
+        System.out.println("修改校友信息"+xy.getXid()+xy.getName());
+        ok=xyService.updateXyEntity(xy);
+        return ok;
     }
 
     /*
-    * 将该学生踢出班级
+     * 将该学生踢出班级
      */
     @ResponseBody
     @RequestMapping("/apply.do")
