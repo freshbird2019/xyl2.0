@@ -26,7 +26,7 @@ public class ClazzController {
     @RequestMapping(value = "/getClassNumById",method = RequestMethod.GET)
     public int getClassNumById(
             @RequestParam(value = "classid",required =false) int id){
-        List<Xy> list=clazzService.getAllXy(id);
+        List<Xy> list=clazzService.getAllXy2(id);
         int num=list.size();
         return num;
     }

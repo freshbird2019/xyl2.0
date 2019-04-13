@@ -22,6 +22,10 @@ public class ClazzService {
         return dao.getAllmember(id);
     }
 
+    // 获取班级审核过的成员
+    public List<Xy> getAllXy2(int id) {
+        return dao.getAllmember2(id);
+    }
 
     // 新建班级
     public boolean addCla(Clazz cla) {
