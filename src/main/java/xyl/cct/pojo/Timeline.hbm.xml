@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="xyl.cct.pojo.Timeline" table="timeline" schema="xyl">
+        <id name="timelineid" column="timelineid"/>
+        <property name="ttime" column="ttime"/>
+        <property name="description" column="description"/>
+        <property name="type" column="type"/>
+        <many-to-one name="xyByTid" class="xyl.cct.pojo.Xy" lazy="false" fetch="join">
+            <column name="tid"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -25,7 +25,7 @@ public class FindNoticeDao {
             transaction = session.beginTransaction();
 
             //查询所有记录
-            String sql = "from FindNotice as fn where fn.showstate = :id and  fn.showstate=0 order by ftime";
+            String sql = "from FindNotice as fn where fn.showstate = :id or fn.showstate=0 order by ftime";
             Query query = session.createQuery(sql);
             query.setParameter("id",cid);
             list = query.list();

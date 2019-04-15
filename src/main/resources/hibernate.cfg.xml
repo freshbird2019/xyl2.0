@@ -6,7 +6,9 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://134.209.5.99:3306/xyl</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
-    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">XYLxyl2019!?</property>
 
       <property name="show_sql">true</property>
     <property name="format_sql">false</property>
@@ -26,6 +28,8 @@
     <mapping resource="JoinAcEntity.hbm.xml"/>
       <mapping resource="xyl/cct/pojo/FindNotice.hbm.xml"/>
       <mapping class="xyl.cct.pojo.FindNotice"/>
+      <mapping resource="xyl/cct/pojo/Timeline.hbm.xml"/>
+      <mapping class="xyl.cct.pojo.Timeline"/>
       <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

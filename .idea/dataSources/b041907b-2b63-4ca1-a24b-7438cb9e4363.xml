@@ -1112,80 +1112,81 @@
     <table id="282" parent="6" name="ly"/>
     <table id="283" parent="6" name="manager"/>
     <table id="284" parent="6" name="pic"/>
-    <table id="285" parent="6" name="xy"/>
-    <column id="286" parent="277" name="aid">
+    <table id="285" parent="6" name="timeline"/>
+    <table id="286" parent="6" name="xy"/>
+    <column id="287" parent="277" name="aid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="287" parent="277" name="name">
+    <column id="288" parent="277" name="name">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="288" parent="277" name="time">
+    <column id="289" parent="277" name="time">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="289" parent="277" name="location">
+    <column id="290" parent="277" name="location">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="290" parent="277" name="num">
+    <column id="291" parent="277" name="num">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="291" parent="277" name="description">
+    <column id="292" parent="277" name="description">
       <Position>6</Position>
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="292" parent="277" name="aid_index">
+    <index id="293" parent="277" name="aid_index">
       <ColNames>aid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="293" parent="277" name="PRIMARY">
+    <key id="294" parent="277" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>aid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="294" parent="278" name="xid">
+    <column id="295" parent="278" name="xid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="295" parent="278" name="aid">
+    <column id="296" parent="278" name="aid">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="296" parent="278" name="aid">
+    <index id="297" parent="278" name="aid">
       <ColNames>aid</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="297" parent="278" name="aid_2">
+    <index id="298" parent="278" name="aid_2">
       <ColNames>aid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="298" parent="278" name="PRIMARY">
+    <key id="299" parent="278" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>xid
 aid</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="299" parent="278" name="appActivity_ibfk_1">
+    <foreign-key id="300" parent="278" name="appActivity_ibfk_1">
       <ColNames>xid</ColNames>
       <RefSchemaName>xyl</RefSchemaName>
       <RefTableName>xy</RefTableName>
@@ -1193,7 +1194,7 @@ aid</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="300" parent="278" name="appActivity_ibfk_2">
+    <foreign-key id="301" parent="278" name="appActivity_ibfk_2">
       <ColNames>aid</ColNames>
       <RefSchemaName>xyl</RefSchemaName>
       <RefTableName>activity</RefTableName>
@@ -1201,289 +1202,335 @@ aid</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="301" parent="279" name="cid">
+    <column id="302" parent="279" name="cid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="302" parent="279" name="name">
+    <column id="303" parent="279" name="name">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="303" parent="279" name="year">
+    <column id="304" parent="279" name="year">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="304" parent="279" name="major">
+    <column id="305" parent="279" name="major">
       <Position>4</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="305" parent="279" name="college">
+    <column id="306" parent="279" name="college">
       <Position>5</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="306" parent="279" name="cid_index">
+    <index id="307" parent="279" name="cid_index">
       <ColNames>cid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="307" parent="279" name="PRIMARY">
+    <key id="308" parent="279" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="308" parent="280" name="noticeid">
+    <column id="309" parent="280" name="noticeid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="309" parent="280" name="fid">
+    <column id="310" parent="280" name="fid">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="310" parent="280" name="ftime">
+    <column id="311" parent="280" name="ftime">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="311" parent="280" name="ftitle">
+    <column id="312" parent="280" name="ftitle">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="280" name="description">
+    <column id="313" parent="280" name="description">
       <Position>5</Position>
       <DataType>varchar(5000)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="313" parent="280" name="showstate">
+    <column id="314" parent="280" name="showstate">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="314" parent="280" name="fid">
+    <index id="315" parent="280" name="fid">
       <ColNames>fid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="315" parent="280" name="PRIMARY">
+    <key id="316" parent="280" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>noticeid</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="316" parent="280" name="findNotice_ibfk_1">
+    <foreign-key id="317" parent="280" name="findNotice_ibfk_1">
       <ColNames>fid</ColNames>
       <RefSchemaName>xyl</RefSchemaName>
       <RefTableName>xy</RefTableName>
       <RefColNames>xid</RefColNames>
     </foreign-key>
-    <column id="317" parent="281" name="aid">
+    <column id="318" parent="281" name="aid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="318" parent="281" name="xid">
+    <column id="319" parent="281" name="xid">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="319" parent="281" name="PRIMARY">
+    <key id="320" parent="281" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>aid
 xid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="320" parent="282" name="lid">
+    <column id="321" parent="282" name="lid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="321" parent="282" name="lyxid">
+    <column id="322" parent="282" name="lyxid">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="322" parent="282" name="lydate">
+    <column id="323" parent="282" name="lydate">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="323" parent="282" name="info">
+    <column id="324" parent="282" name="info">
       <Position>4</Position>
       <DataType>varchar(5000)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="324" parent="282" name="state">
+    <column id="325" parent="282" name="state">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="325" parent="282" name="best">
+    <column id="326" parent="282" name="best">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="326" parent="282" name="ly_index">
+    <index id="327" parent="282" name="ly_index">
       <ColNames>lid</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="327" parent="282" name="lyxid">
+    <index id="328" parent="282" name="lyxid">
       <ColNames>lyxid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="328" parent="282" name="PRIMARY">
+    <key id="329" parent="282" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>lid</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="329" parent="282" name="ly_ibfk_1">
+    <foreign-key id="330" parent="282" name="ly_ibfk_1">
       <ColNames>lyxid</ColNames>
       <RefSchemaName>xyl</RefSchemaName>
       <RefTableName>xy</RefTableName>
       <RefColNames>xid</RefColNames>
     </foreign-key>
-    <column id="330" parent="283" name="id">
+    <column id="331" parent="283" name="id">
       <Position>1</Position>
       <DataType>varchar(5)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="331" parent="283" name="name">
+    <column id="332" parent="283" name="name">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="332" parent="283" name="password">
+    <column id="333" parent="283" name="password">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="333" parent="283" name="PRIMARY">
+    <key id="334" parent="283" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="334" parent="284" name="id">
+    <column id="335" parent="284" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="335" parent="284" name="name">
+    <column id="336" parent="284" name="name">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="336" parent="284" name="path">
+    <column id="337" parent="284" name="path">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="337" parent="284" name="likeNum">
+    <column id="338" parent="284" name="likeNum">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="338" parent="284" name="PRIMARY">
+    <key id="339" parent="284" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="339" parent="285" name="xid">
+    <column id="340" parent="285" name="timelineid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="340" parent="285" name="name">
+    <column id="341" parent="285" name="ttime">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="342" parent="285" name="description">
+      <Position>3</Position>
+      <DataType>varchar(5000)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="343" parent="285" name="type">
+      <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="344" parent="285" name="tid">
+      <Position>5</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="345" parent="285" name="tid">
+      <ColNames>tid</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="346" parent="285" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>timelineid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="347" parent="285" name="timeline_ibfk_1">
+      <ColNames>tid</ColNames>
+      <RefSchemaName>xyl</RefSchemaName>
+      <RefTableName>xy</RefTableName>
+      <RefColNames>xid</RefColNames>
+    </foreign-key>
+    <column id="348" parent="286" name="xid">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="349" parent="286" name="name">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="341" parent="285" name="classid">
+    <column id="350" parent="286" name="classid">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="342" parent="285" name="sex">
+    <column id="351" parent="286" name="sex">
       <Position>4</Position>
       <DataType>char(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="343" parent="285" name="phone">
+    <column id="352" parent="286" name="phone">
       <Position>5</Position>
       <DataType>char(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="344" parent="285" name="mail">
+    <column id="353" parent="286" name="mail">
       <Position>6</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="345" parent="285" name="pw">
+    <column id="354" parent="286" name="pw">
       <Position>7</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="346" parent="285" name="state">
+    <column id="355" parent="286" name="state">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="347" parent="285" name="address">
+    <column id="356" parent="286" name="address">
       <Position>9</Position>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="348" parent="285" name="xy_index">
+    <index id="357" parent="286" name="xy_index">
       <ColNames>xid</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="349" parent="285" name="classid">
+    <index id="358" parent="286" name="classid">
       <ColNames>classid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="350" parent="285" name="PRIMARY">
+    <key id="359" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>xid</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="351" parent="285" name="xy_ibfk_1">
+    <foreign-key id="360" parent="286" name="xy_ibfk_1">
       <ColNames>classid</ColNames>
       <RefSchemaName>xyl</RefSchemaName>
       <RefTableName>class</RefTableName>

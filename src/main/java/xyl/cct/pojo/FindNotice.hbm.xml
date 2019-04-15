@@ -6,7 +6,6 @@
 
     <class name="xyl.cct.pojo.FindNotice" table="findNotice" schema="xyl">
         <id name="noticeid" column="noticeid"/>
-        <property name="fid" column="fid"/>
         <property name="ftime" column="ftime"/>
         <property name="ftitle" column="ftitle"/>
         <property name="description" column="description"/>

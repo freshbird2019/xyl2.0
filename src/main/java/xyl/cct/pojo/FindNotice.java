@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 @Entity
 public class FindNotice {
     private int noticeid;
-    private int fid;
+    //private int fid;
     private Timestamp ftime;
     private String ftitle;
     private String description;
@@ -24,7 +24,7 @@ public class FindNotice {
         this.noticeid = noticeid;
     }
 
-    @Basic
+  /*  @Basic
     @Column(name = "fid")
     public int getFid() {
         return fid;
@@ -33,7 +33,7 @@ public class FindNotice {
     public void setFid(int fid) {
         this.fid = fid;
     }
-
+*/
     @Basic
     @Column(name = "ftime")
     public Timestamp getFtime() {
@@ -82,7 +82,7 @@ public class FindNotice {
         FindNotice that = (FindNotice) o;
 
         if (noticeid != that.noticeid) return false;
-        if (fid != that.fid) return false;
+       // if (fid != that.fid) return false;
         if (showstate != that.showstate) return false;
         if (ftime != null ? !ftime.equals(that.ftime) : that.ftime != null) return false;
         if (ftitle != null ? !ftitle.equals(that.ftitle) : that.ftitle != null) return false;
@@ -94,7 +94,7 @@ public class FindNotice {
     @Override
     public int hashCode() {
         int result = noticeid;
-        result = 31 * result + fid;
+        //result = 31 * result + fid;
         result = 31 * result + (ftime != null ? ftime.hashCode() : 0);
         result = 31 * result + (ftitle != null ? ftitle.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
